@@ -1,2 +1,2 @@
 # xxyzz.github.io
-First repository, wow!
+First website, wow!
