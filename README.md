@@ -1,2 +1,1 @@
-# xxyzz.github.io
-First website, wow!
+Respect my authority!
