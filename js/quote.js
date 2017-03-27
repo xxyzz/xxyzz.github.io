@@ -261,6 +261,8 @@ function getQuote() {
     $("#wiki, .mdl-card__supporting-text, .mdl-card__menu").css({
         color: colors[color]
     });
+    var metaThemeColor = document.querySelector("meta[name=theme-color]");
+    metaThemeColor.setAttribute("content", colors[color];
 }
 
 $(document).ready(function() {
