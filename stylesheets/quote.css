@@ -2,28 +2,24 @@ body {
     background-color: #009688;
     font-family: 'Noto Sans', sans-serif;
 }
-.footer {
-    text-align: center;
-    margin: 15px auto;
-    font-size: 1.3em;
-    color: #fff;
-}
-.footer a {
-    text-decoration: none;
-}
-.card-wide.mdl-card {
-    margin: 8% auto auto auto;
+.card-wide.mdl-card{
+    margin: 10% auto auto auto;
 }
 .card-wide > .mdl-card__title {
-    height: 200px;
+    min-height: 200px;
     background: url('../images/black_glasses.jpg') center / cover;
 }
 .card-wide > .mdl-card__menu {
     color: #009688;
 }
+.card-wide > .mdl-card__supporting-text {
+    color: #009688;
+    font-size: 1em;
+}
 #new-quote {
     float: right;
+    color: #fff;
 }
 #new-quote:hover {
-    opacity: 0.9;
+    opacity: 0.8;
 }
