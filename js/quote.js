@@ -262,7 +262,7 @@ function getQuote() {
         color: colors[color]
     });
     var metaThemeColor = document.querySelector("meta[name=theme-color]");
-    metaThemeColor.setAttribute("content", colors[color];
+    metaThemeColor.setAttribute("content", colors[color]);
 }
 
 $(document).ready(function() {
