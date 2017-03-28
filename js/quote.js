@@ -1,5 +1,6 @@
 var colors = ['#f44336', ' #e91e63', ' #9c27b0', '#673ab7', '#3f51b5', ' #2196f3', ' #009688', ' #cddc39', '#ffc107', ' #ff5722', ' #795548', ' #607d8b'];
-// WikiquoteApi
+var authors = ['Augustus', 'Lucius_Cornelius_Sulla', 'Seneca_the_Younger', 'Pliny_the_Elder', 'Marcus_Aurelius'];
+
 var WikiquoteApi = (function() {
 
   var wqa = {};
@@ -247,24 +248,40 @@ var WikiquoteApi = (function() {
   return wqa;
 }());
 
-// Get quote and change color
-function getQuote() {
-
-    WikiquoteApi.getRandomQuote("Jiang Zemin", function(quote) {
-        $("#text").text(quote.quote);
-    }, function(e){});
-
+function changeColor() {
     var color = Math.floor(Math.random() * colors.length);
     $("body, #new-quote").css({
         backgroundColor: colors[color]
     });
-    $("#wiki, .mdl-card__supporting-text, .mdl-card__menu").css({
+    $("#wiki, .mdl-card__title-text, .mdl-card__supporting-text, .mdl-card__menu").css({
         color: colors[color]
     });
     var metaThemeColor = document.querySelector("meta[name=theme-color]");
     metaThemeColor.setAttribute("content", colors[color]);
 }
 
+function getQuote() {
+
+    var author = Math.floor(Math.floor(Math.random() * authors.length));
+    WikiquoteApi.getRandomQuote(authors[author], function(quote) {
+        console.log(quote.quote);
+        var imageURL = './images/' + authors[author] + ".jpg";
+        var wikiLink = 'https://en.wikiquote.org/wiki/' + authors[author];
+        console.log(imageURL);
+        if (quote.quote.length >= 5) {
+            $(".mdl-card__title").css('background', 'url(' + imageURL + ') center / cover');
+            $(".mdl-card__title-text").text(authors[author]);
+            $("#text").text(quote.quote);
+            $("#wiki").attr('href', wikiLink);
+            changeColor();
+        } else {
+            getQuote();
+        }
+    }, function(e){});
+
+}
+
 $(document).ready(function() {
+    getQuote();
     $("#new-quote").on("click", getQuote);
 });
