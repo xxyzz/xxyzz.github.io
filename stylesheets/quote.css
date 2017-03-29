@@ -1,20 +1,20 @@
 body {
-    background-color: #009688;
+    background-color: #ff5722;
     font-family: 'Noto Sans', sans-serif;
 }
 .card-wide.mdl-card{
     margin: 10% auto auto auto;
 }
 .card-wide > .mdl-card__title {
-    color: #009688;
+    color: #ff5722;
     min-height: 300px;
     background: url('../images/Julius_Caesar.jpg') center / cover;
 }
 .card-wide > .mdl-card__menu {
-    color: #009688;
+    color: #ff5722;
 }
 .card-wide > .mdl-card__supporting-text {
-    color: #009688;
+    color: #ff5722;
     font-size: 1em;
 }
 #new-quote {
