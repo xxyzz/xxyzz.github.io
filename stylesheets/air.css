@@ -7,6 +7,9 @@ body {
 .mdl-grid {
     max-width: 800px;
 }
+.mdl-grid.center-items {
+  justify-content: center;
+}
 .mdl-card__action {
     display: flex;
     box-sizing: border-box;
