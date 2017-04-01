@@ -1,0 +1,25 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+}
+.mdl-layout__content {
+    background: url('../images/air/title.jpg') center / cover;
+}
+.card-wide.mdl-card {
+  width: 512px;
+  margin: 5% auto;
+}
+#about > .mdl-card__title {
+    color: #fff;
+    height: 256px;
+    background: url('../images/air/smog.jpg') center / cover;
+}
+#detail_link {
+    float: right;
+    margin: 10px;
+}
+#detail_link img {
+    width: 50px;
+}
+.mdl-cell {
+    margin: auto;
+}
