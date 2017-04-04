@@ -1,0 +1,18 @@
+body {
+    background: #b2ebf2;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: center;
+}
+
+ .mdl-textfield__expandable-holder {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.mdl-button {
+    margin-left: 10px;
+}
+
+.mdl-grid {
+    justify-content: center;
+}

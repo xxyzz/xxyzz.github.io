@@ -6,6 +6,12 @@
 
 # Air Quality
 
-[Fuck smog!](https://xxyzz/github.io/air)
+[Fuck smog!](https://xxyzz.github.io/air)
 
 ![logo](https://github.com/xxyzz/xxyzz.github.io/blob/master/images/air/android-chrome-96x96.png)
+
+# Wikipedia Searcher
+
+[Search Wikipedia](https://xxyzz.github.io/wiki)
+
+![logo](https://github.com/xxyzz/xxyzz.github.io/blob/master/images/wiki/apple-touch-icon.png)
