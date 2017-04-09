@@ -1,0 +1,13 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background:  #ffc107;
+}
+.center-items {
+    justify-content: center;
+}
+.mdl-card {
+    width: 300px;
+}
+a{
+    text-decoration: none;
+}
