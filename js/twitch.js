@@ -2,10 +2,11 @@ var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "habathcx", "
 function addCards(username) {
     $.getJSON("https://wind-bow.gomix.me/twitch-api/streams/" + username + "?callback=?", function(data) {
         var add1 = '<div class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--6-col-phone mdl-shadow--4dp"><div class="mdl-card__media">';
+        var add5 = '';
         if (data.stream === null) {
-            var add5 = 'Offline' + '</div></div>';
+            add5 = 'Offline' + '</div></div>';
         } else {
-            var add5 = data.stream.game + data.stream.channel.status + '</div></div>';
+            add5 = data.stream.game + data.stream.channel.status + '</div></div>';
         }
         $.getJSON("https://wind-bow.gomix.me/twitch-api/channels/" + username + "?callback=?", function(data) {
             var add2 = '<img src="' + data.logo + '"></div><div class="mdl-card__title"><a href="';

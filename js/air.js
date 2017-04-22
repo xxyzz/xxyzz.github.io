@@ -2,7 +2,7 @@ var token = "b5fa4029f5dfd6ed30ac83a5b4dea85af0b06791";
 
 function choose() {
 
-    var input = $("#input")
+    var input = $("#input");
     var timer = null;
 
     input.on("keyup", function() {
@@ -26,7 +26,7 @@ function gelocalized() {
         var result = request.response;
         setCityData(result);
         setDetail(result);
-    }
+    };
 
 }
 
@@ -41,7 +41,7 @@ function search(city, output) {
         var result = request.response;
         setCityData(result);
         setDetail(result);
-    }
+    };
 }
 
 function setCityData(result) {
@@ -101,5 +101,5 @@ $(document).ready(function() {
     $("#share").on("click", function() {
         window.open("https://telegram.me/share/url?url=https://xxyzz.github.io/air");
         window.open("https://twitter.com/intent/tweet?url=https://xxyzz.github.io&text=Check out your city's air quality.");
-    })
+    });
 });
