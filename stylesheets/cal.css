@@ -1,0 +1,42 @@
+body {
+  font-family: Noto Sans;
+  background: #3f51b5;
+}
+
+.mdl-grid {
+  justify-content: center;
+}
+
+.calculator {
+  background: #ffffff;
+}
+
+.container {
+  margin-top: 8%;
+}
+
+.mdl-cell {
+  margin: auto;
+}
+
+.answer_box {
+  height: 100px;
+  text-align: right;
+}
+
+.answer, .formula {
+  line-height: 50px;
+  vertical-align: middle;
+  margin-bottom: auto;
+  margin-right: 5px;
+}
+
+.answer {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.formula {
+  font-size: 3em;
+  font-weight: normal;
+}

@@ -15,3 +15,7 @@
 [Search Wikipedia](https://xxyzz.github.io/wiki)
 
 ![logo](https://github.com/xxyzz/xxyzz.github.io/blob/master/images/wiki/apple-touch-icon.png)
+
+# Javascript Calculator
+
+[A simple Calculator](https://xxyzz.github.io/cal)

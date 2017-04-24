@@ -1,166 +1,174 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="76x76" href="images/air/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="images/air/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="images/air/favicon-16x16.png" sizes="16x16">
-    <meta name="theme-color" content=" #00bcd4">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <link rel="stylesheet" href="stylesheets/air.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/air.js"></script>
-    <title>Air Quality</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="76x76" href="images/air/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="images/air/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="images/air/favicon-16x16.png" sizes="16x16">
+  <meta name="theme-color" content="#00bcd4">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel="stylesheet" href="stylesheets/air.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js/air.js"></script>
+  <title>Air Quality</title>
 </head>
+
 <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <span class="mdl-layout-title">Air Quality</span>
-            <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
-            <!-- Navigation. We hide it in small screens. -->
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="#aqi">Aqi</a>
-                <a class="mdl-navigation__link" href="#detail">Detail</a>
-                <a class="mdl-navigation__link" href="#about">About</a>
-            </nav>
-            </div>
-        </header>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Air Quality</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="#aqi">Aqi</a>
+          <a class="mdl-navigation__link" href="#detail">Detail</a>
+          <a class="mdl-navigation__link" href="#about">About</a>
+        </nav>
+      </div>
+    </header>
     <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Air Quality</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="#aqi">Aqi</a>
-      <a class="mdl-navigation__link" href="#detail">Detail</a>
-      <a class="mdl-navigation__link" href="#about">About</a>
-    </nav>
-  </div>
-  <main class="mdl-layout__content">
-    <div class="page-content">
+      <span class="mdl-layout-title">Air Quality</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="#aqi">Aqi</a>
+        <a class="mdl-navigation__link" href="#detail">Detail</a>
+        <a class="mdl-navigation__link" href="#about">About</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
         <div class="mdl-grid center-items">
-            <div class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--6-col-phone mdl-shadow--2dp" id="aqi">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text"></h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <span class="mdl-chip mdl-chip--contact">
-                        <span class="mdl-chip__contact mdl-color-text--black" id="aqi_data"></span>
-                        <span class="mdl-chip__text" id="level"></span>
-                    </span>
-                    <span class="mdl-chip">
-                        <span class="mdl-chip__text" id="time"></span>
-                    </span>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <form action="#">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                            <label class="mdl-button mdl-js-button mdl-button--icon" for="input">
-                                <i class="material-icons">search</i>
-                            </label>
-                            <div class="mdl-textfield__expandable-holder">
-                                <input class="mdl-textfield__input" type="text" id="input">
-                                <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
-                            </div>
-                        </div>
-                        <a href="#" id="detail_link" title="More details on aqicn.org" target="_blank"><img src="images/air/aqicn.png" alt="aqicn logo"></a>
-                    </form>
-                </div>
-                <div class="mdl-card__menu">
-                    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="share" title="Share on twitter">
-                    <i class="material-icons">share</i>
-                    </button>
-                </div>
+          <div class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--6-col-phone mdl-shadow--2dp" id="aqi">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text"></h2>
             </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-chip mdl-chip--contact">
+                  <span class="mdl-chip__contact mdl-color-text--black" id="aqi_data"></span>
+              <span class="mdl-chip__text" id="level"></span>
+              </span>
+              <span class="mdl-chip">
+                  <span class="mdl-chip__text" id="time"></span>
+              </span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <form action="#">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                  <label class="mdl-button mdl-js-button mdl-button--icon" for="input">
+                      <i class="material-icons">search</i>
+                    </label>
+                  <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" id="input">
+                    <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+                  </div>
+                </div>
+                <a href="#" id="detail_link" title="More details on aqicn.org" target="_blank"><img src="images/air/aqicn.png" alt="aqicn logo"></a>
+              </form>
+            </div>
+            <div class="mdl-card__menu">
+              <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="share" title="Share on twitter">
+                  <i class="material-icons">share</i>
+                </button>
+            </div>
+          </div>
 
-            <div class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--6-col-phone mdl-shadow--2dp" id="detail">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Detail</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--1--col">
-                            <span class="mdl-chip mdl-chip--contact">
-                                <span class="mdl-chip__contact mdl-color-text--black" id="pm25"></span>
-                                <span class="mdl-chip__text">PM2.5</span>
-                            </span>
-                        </div>
-                        <div class="mdl-cell mdl-cell--1--col">
-                            <span class="mdl-chip mdl-chip--contact">
-                                <span class="mdl-chip__contact mdl-color-text--black" id="pm10"></span>
-                                <span class="mdl-chip__text">PM10</span>
-                            </span>
-                        </div>
-                        <div class="mdl-cell mdl-cell--1--col">
-                            <span class="mdl-chip mdl-chip--contact">
-                                <span class="mdl-chip__contact mdl-color-text--black" id="o3"></span>
-                                <span class="mdl-chip__text">O3</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--1--col">
-                            <span class="mdl-chip mdl-chip--contact">
-                                <span class="mdl-chip__contact mdl-color-text--black" id="no2"></span>
-                                <span class="mdl-chip__text">NO2</span>
-                            </span>
-                        </div>
-                        <div class="mdl-cell mdl-cell--1--col">
-                            <span class="mdl-chip mdl-chip--contact">
-                                <span class="mdl-chip__contact mdl-color-text--black" id="so2"></span>
-                                <span class="mdl-chip__text">SO2</span>
-                            </span>
-                        </div>
-                        <div class="mdl-cell mdl-cell--1--col">
-                            <span class="mdl-chip mdl-chip--contact">
-                                <span class="mdl-chip__contact mdl-color-text--black" id="co"></span>
-                                <span class="mdl-chip__text">CO</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--1--col">
-                            <span class="mdl-chip mdl-chip--contact">
-                                <span class="mdl-chip__contact mdl-color-text--black" id="temp"></span>
-                                <span class="mdl-chip__text">Temp</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+          <div class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--6-col-phone mdl-shadow--2dp" id="detail">
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Detail</h2>
             </div>
+            <div class="mdl-card__supporting-text">
+              <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1--col">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color-text--black" id="pm25"></span>
+                  <span class="mdl-chip__text">PM2.5</span>
+                  </span>
+                </div>
+                <div class="mdl-cell mdl-cell--1--col">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color-text--black" id="pm10"></span>
+                  <span class="mdl-chip__text">PM10</span>
+                  </span>
+                </div>
+                <div class="mdl-cell mdl-cell--1--col">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color-text--black" id="o3"></span>
+                  <span class="mdl-chip__text">O3</span>
+                  </span>
+                </div>
+              </div>
+              <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1--col">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color-text--black" id="no2"></span>
+                  <span class="mdl-chip__text">NO2</span>
+                  </span>
+                </div>
+                <div class="mdl-cell mdl-cell--1--col">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color-text--black" id="so2"></span>
+                  <span class="mdl-chip__text">SO2</span>
+                  </span>
+                </div>
+                <div class="mdl-cell mdl-cell--1--col">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color-text--black" id="co"></span>
+                  <span class="mdl-chip__text">CO</span>
+                  </span>
+                </div>
+              </div>
+              <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--1--col">
+                  <span class="mdl-chip mdl-chip--contact">
+                      <span class="mdl-chip__contact mdl-color-text--black" id="temp"></span>
+                  <span class="mdl-chip__text">Temp</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <div class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--6-col-phone mdl-shadow--2dp" id="about">
-              <div class="mdl-card__media">
-                <img src="images/air/smog.jpg" alt="smog">
-              </div>
-              <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">About</h2>
-              </div>
-              <div class="mdl-card__supporting-text">
-                The date sources come form <a href="https://aqicn.org/city/beijing">aqicn.org</a>, thanks to their work.<br>
-                Read more about AQI on <a href="https://www.wikiwand.com/en/Air_quality_index" target="_blank">Wikipedia</a>.<br>
-                Fuck <a href="https://www.wikiwand.com/en/Smog#/Health_effects" target="_blank">smog</a>.
-              </div>
+          <div class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--6-col-phone mdl-shadow--2dp" id="about">
+            <div class="mdl-card__media">
+              <img src="images/air/smog.jpg" alt="smog">
             </div>
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">About</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              The date sources come form
+              <a href="https://aqicn.org/city/beijing">aqicn.org</a>, thanks to their work.<br> Read more about AQI on
+              <a href="https://www.wikiwand.com/en/Air_quality_index" target="_blank">Wikipedia</a>.<br> Fuck
+              <a href="https://www.wikiwand.com/en/Smog#/Health_effects" target="_blank">smog</a>.
+            </div>
+          </div>
         </div>
 
         <footer class="mdl-mini-footer">
-            <div class="mdl-mini-footer__left-section">
-                <div class="mdl-logo"><img src="images/air/favicon-32x32.png" alt="Logo"></div>
-                    <ul class="mdl-mini-footer__link-list">
-                        <li><a href="https://aqicn.org/city/beijing" target="_blank">Aqicn.org</a></li>
-                        <li><a href="https://github.com/xxyzz/xxyzz.github.io" target="_blank">Github</a></li>
-                    </ul>
-            </div>
+          <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo"><img src="images/air/favicon-32x32.png" alt="Logo"></div>
+            <ul class="mdl-mini-footer__link-list">
+              <li>
+                <a href="https://aqicn.org/city/beijing" target="_blank">Aqicn.org</a>
+              </li>
+              <li>
+                <a href="https://github.com/xxyzz/xxyzz.github.io" target="_blank">Github</a>
+              </li>
+            </ul>
+          </div>
         </footer>
-    </div>
-  </main>
-</div>
+      </div>
+    </main>
+  </div>
 
 </body>
+
 </html>
