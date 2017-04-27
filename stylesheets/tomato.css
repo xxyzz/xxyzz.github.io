@@ -1,0 +1,21 @@
+body {
+  background: #f44336;
+}
+
+.mdl-grid {
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.mdl-card__title {
+  justify-content: center;
+}
+
+.mdl-card__title-text {
+  font: 7em 'Noto Sans', sans-serif;
+  color: #f44336;
+}
+
+.mdl-card__actions {
+  text-align: center;
+}

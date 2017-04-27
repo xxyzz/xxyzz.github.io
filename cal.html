@@ -1,59 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#3f51b5">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="stylesheets/cal.css">
-  <script src="js/cal.js"></script>
-  <title>JavaScript Calculator</title>
-</head>
-
-<body>
-  <div class="container mdl-grid">
-    <div class="calculator mdl-cell mdl-cell--6-col mdl-shadow--2dp">
-      <div class="answer_box mdl-shadow--2dp">
-        <p class="answer"></p>
-        <p class="formula"></p>
-      </div>
-      <div class="buttons">
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="ac">AC</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="ce">CE</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="/">÷</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="*">x</button></div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#3f51b5">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"/>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="stylesheets/cal.css">
+    <script src="js/cal.js"></script>
+    <title>JavaScript Calculator</title>
+  </head>
+  <body>
+    <div class="container mdl-grid">
+      <div class="calculator mdl-cell mdl-cell--6-col mdl-shadow--2dp">
+        <div class="answer_box mdl-shadow--2dp">
+          <p class="answer"></p>
+          <p class="formula"></p>
         </div>
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="7">7</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="8">8</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="9">9</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="-">-</button></div>
-        </div>
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="4">4</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="5">5</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="6">6</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="+">+</button></div>
-        </div>
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="2">2</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="2">2</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="3">3</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="=">=</button></div>
-        </div>
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="0">0</button></div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value=".">.</button></div>
+        <div class="buttons">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="ac">AC</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="ce">CE</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="/">÷</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="*">x</button>
+            </div>
+          </div>
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="7">7</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="8">8</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="9">9</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="-">-</button>
+            </div>
+          </div>
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="4">4</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="5">5</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="6">6</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="+">+</button>
+            </div>
+          </div>
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="2">2</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="2">2</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="3">3</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="=">=</button>
+            </div>
+          </div>
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="0">0</button>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value=".">.</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
