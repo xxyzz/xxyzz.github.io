@@ -2,19 +2,29 @@
 
 [Veni, vidi, vici.](https://xxyzz.github.io)
 
-![logo](https://github.com/xxyzz/xxyzz.github.io/blob/master/images/android-chrome-192x192.png)
+![logo](images/quote/android-chrome-192x192.png)
 
 # Air Quality
 
 [Fuck smog!](https://xxyzz.github.io/air)
 
-![logo](https://github.com/xxyzz/xxyzz.github.io/blob/master/images/air/android-chrome-96x96.png)
+![logo](images/air/android-chrome-96x96.png)
 
 # Wikipedia Searcher
 
 [Search Wikipedia](https://xxyzz.github.io/wiki)
 
-![logo](https://github.com/xxyzz/xxyzz.github.io/blob/master/images/wiki/apple-touch-icon.png)
+![logo](images/wiki/apple-touch-icon.png)
+
+# Tomato Clock
+
+[Tomato Clock](https://xxyzz.github.io/tomato)
+
+![logo](images/tomato/tomato.ico)
+
+# Twitchtv
+
+[Twitchtv](https://xxyzz.github.io/twitch)
 
 # Javascript Calculator
 

@@ -28,22 +28,22 @@ var WikiquoteApi = (function() {
       success: function(result, status) {
         var pages = result.query.pages;
         var pageId = -1;
-        for(var p in pages) {
+        for (var p in pages) {
           var page = pages[p];
           // api can return invalid recrods, these are marked as "missing"
-          if(!("missing" in page)) {
+          if (!("missing" in page)) {
             pageId = page.pageid;
             break;
           }
         }
-        if(pageId > 0) {
+        if (pageId > 0) {
           success(pageId);
         } else {
           error("No results");
         }
       },
 
-      error: function(xhr, result, status){
+      error: function(xhr, result, status) {
         error("Error processing your query");
       }
     });
@@ -67,22 +67,25 @@ var WikiquoteApi = (function() {
         pageid: pageId
       },
 
-      success: function(result, status){
+      success: function(result, status) {
         var sectionArray = [];
         var sections = result.parse.sections;
-        for(var s in sections) {
+        for (var s in sections) {
           var splitNum = sections[s].number.split('.');
-          if(splitNum.length > 1 && splitNum[0] === "1") {
+          if (splitNum.length > 1 && splitNum[0] === "1") {
             sectionArray.push(sections[s].index);
           }
         }
         // Use section 1 if there are no "1.x" sections
-        if(sectionArray.length === 0) {
+        if (sectionArray.length === 0) {
           sectionArray.push("1");
         }
-        success({ titles: result.parse.title, sections: sectionArray });
+        success({
+          titles: result.parse.title,
+          sections: sectionArray
+        });
       },
-      error: function(xhr, result, status){
+      error: function(xhr, result, status) {
         error("Error getting sections");
       }
     });
@@ -120,7 +123,7 @@ var WikiquoteApi = (function() {
         section: sectionIndex
       },
 
-      success: function(result, status){
+      success: function(result, status) {
         var quotes = result.parse.text["*"];
         var quoteArray = [];
 
@@ -132,15 +135,18 @@ var WikiquoteApi = (function() {
           var $bolds = $(this).find('b');
 
           // If the section has bold text, use it.  Otherwise pull the plain text.
-          if($bolds.length > 0) {
+          if ($bolds.length > 0) {
             quoteArray.push($bolds.html());
           } else {
             quoteArray.push($(this).html());
           }
         });
-        success({ titles: result.parse.title, quotes: quoteArray });
+        success({
+          titles: result.parse.title,
+          quotes: quoteArray
+        });
       },
-      error: function(xhr, result, status){
+      error: function(xhr, result, status) {
         error("Error getting quotes");
       }
     });
@@ -162,20 +168,20 @@ var WikiquoteApi = (function() {
         section: sec
       },
 
-      success: function(result, status){
+      success: function(result, status) {
 
         var wikilink;
-		console.log('what is iwlink:'+result.parse.iwlinks);
-		var iwl = result.parse.iwlinks;
-		for(var i=0; i<(iwl).length; i++){
-			var obj = iwl[i];
-			if((obj["*"]).indexOf(title) != -1){
-				 wikilink = obj.url;
-			}
-		}
+        console.log('what is iwlink:' + result.parse.iwlinks);
+        var iwl = result.parse.iwlinks;
+        for (var i = 0; i < (iwl).length; i++) {
+          var obj = iwl[i];
+          if ((obj["*"]).indexOf(title) != -1) {
+            wikilink = obj.url;
+          }
+        }
         success(wikilink);
       },
-      error: function(xhr, result, status){
+      error: function(xhr, result, status) {
         error("Error getting quotes");
       }
     });
@@ -195,10 +201,10 @@ var WikiquoteApi = (function() {
         search: titles
       },
 
-      success: function(result, status){
+      success: function(result, status) {
         success(result[1]);
       },
-      error: function(xhr, result, status){
+      error: function(xhr, result, status) {
         error("Error with opensearch for " + titles);
       }
     });
@@ -218,17 +224,22 @@ var WikiquoteApi = (function() {
     };
 
     var chooseQuote = function(quotes) {
-      var randomNum = Math.floor(Math.random()*quotes.quotes.length);
-      success({ titles: quotes.titles, quote: quotes.quotes[randomNum] });
+      var randomNum = Math.floor(Math.random() * quotes.quotes.length);
+      success({
+        titles: quotes.titles,
+        quote: quotes.quotes[randomNum]
+      });
     };
 
     var getQuotes = function(pageId, sections) {
-      var randomNum = Math.floor(Math.random()*sections.sections.length);
+      var randomNum = Math.floor(Math.random() * sections.sections.length);
       wqa.getQuotesForSection(pageId, sections.sections[randomNum], chooseQuote, errorFunction);
     };
 
     var getSections = function(pageId) {
-      wqa.getSectionsForPage(pageId, function(sections) { getQuotes(pageId, sections); }, errorFunction);
+      wqa.getSectionsForPage(pageId, function(sections) {
+        getQuotes(pageId, sections);
+      }, errorFunction);
     };
 
     wqa.queryTitles(titles, getSections, errorFunction);
@@ -240,7 +251,7 @@ var WikiquoteApi = (function() {
   wqa.capitalizeString = function(input) {
     var inputArray = input.split(' ');
     var output = [];
-    for(s in inputArray) {
+    for (var s in inputArray) {
       output.push(inputArray[s].charAt(0).toUpperCase() + inputArray[s].slice(1));
     }
     return output.join(' ');
@@ -250,41 +261,41 @@ var WikiquoteApi = (function() {
 }());
 
 function changeColor() {
-    var color = Math.floor(Math.random() * colors.length);
-    $("body, #new-quote").css({
-        backgroundColor: colors[color]
-    });
-    $("#wiki, .mdl-card__title-text, .mdl-card__supporting-text, #share").css({
-        color: colors[color]
-    });
-    var metaThemeColor = document.querySelector("meta[name=theme-color]");
-    metaThemeColor.setAttribute("content", colors[color]);
+  var color = Math.floor(Math.random() * colors.length);
+  $("body, #new-quote").css({
+    backgroundColor: colors[color]
+  });
+  $("#wiki, .mdl-card__title-text, .mdl-card__supporting-text, #share").css({
+    color: colors[color]
+  });
+  var metaThemeColor = document.querySelector("meta[name=theme-color]");
+  metaThemeColor.setAttribute("content", colors[color]);
 }
 
 function getQuote() {
 
-    var author = Math.floor(Math.floor(Math.random() * authors.length));
-    WikiquoteApi.getRandomQuote(authors[author], function(quote) {
-        var imageURL = './images/' + authors[author] + ".jpg";
-        var wikiLink = 'https://en.wikiquote.org/wiki/' + authors[author];
-        if (quote.quote.length >= 5) {
-            $(".mdl-card__title").css('background', 'url(' + imageURL + ') center / cover');
-            $(".mdl-card__title-text").text(authors[author].split('_').join(' '));
-            currentQuote = quote.quote + ' --' + authors[author].split('_').join(' ');
-            $("#text").text(quote.quote);
-            $("#wiki").attr('href', wikiLink);
-            changeColor();
-        } else {
-            getQuote();
-        }
-    }, function(e){});
+  var author = Math.floor(Math.floor(Math.random() * authors.length));
+  WikiquoteApi.getRandomQuote(authors[author], function(quote) {
+    var imageURL = './images/quote/' + authors[author] + ".jpg";
+    var wikiLink = 'https://en.wikiquote.org/wiki/' + authors[author];
+    if (quote.quote.length >= 5) {
+      $(".mdl-card__title").css('background', 'url(' + imageURL + ') center / cover');
+      $(".mdl-card__title-text").text(authors[author].split('_').join(' '));
+      currentQuote = quote.quote + ' --' + authors[author].split('_').join(' ');
+      $("#text").text(quote.quote);
+      $("#wiki").attr('href', wikiLink);
+      changeColor();
+    } else {
+      getQuote();
+    }
+  }, function(e) {});
 
 }
 
 $(document).ready(function() {
-    getQuote();
-    $("#new-quote").on("click", getQuote);
-    $("#share").on("click", function() {
-        window.open("https://telegram.me/share/url?url=https://xxyzz.github.io&text=" + currentQuote);
-    });
+  getQuote();
+  $("#new-quote").on("click", getQuote);
+  $("#share").on("click", function() {
+    window.open("https://telegram.me/share/url?url=https://xxyzz.github.io&text=" + currentQuote);
+  });
 });
