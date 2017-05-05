@@ -29,3 +29,5 @@
 # Javascript Calculator
 
 [A simple Calculator](https://xxyzz.github.io/cal)
+
+![logo](images/cal/cal.ico)
