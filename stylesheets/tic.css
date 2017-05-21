@@ -1,0 +1,37 @@
+@media only screen and (min-width: 320px) {
+  .board svg {
+    max-width: 550px;
+  }
+}
+
+@media only screen and (min-width: 350px) {
+  br {
+    display: none;
+  }
+}
+
+body {
+  background: #14BDAC;
+}
+
+.board {
+  text-align: center;
+}
+
+.buttons {
+  margin-top: 5%;
+  text-align: center;
+}
+
+.buttons button {
+  margin: 5px;
+}
+
+.symbol {
+  margin-right: 20px;
+}
+
+.count {
+  min-width: 75px;
+  text-align: right;
+}

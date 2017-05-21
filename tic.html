@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Tic-tac-toe game, play with computer or your friends. Imitate Google's game. Freecodecamp advanced front end development project.">
+    <meta property="og:title" content="Tic tac toe">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/tic/Tic-Tac-Toe-Game-grey.png">
+    <meta property="og:description" content="Tic-tac-toe game, play with computer or your friends. Imitate Google's game. Freecodecamp advanced front end development project.">
+    <meta name="theme-color" content="#14BDAC">
+    <link rel="shortcut icon" href="images/tic/Tic-Tac-Toe-Game-grey.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-yellow.min.css"/>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <title>Tic-tac-toe</title>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        },
+        i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-98608216-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <link rel="stylesheet" href="stylesheets/tic.css">
+  </head>
+  <body>
+    <div class="board">
+      <svg viewbox="0 0 272 272">
+        <path d="M 10 100 L 262 100" stroke="#0DA192" stroke-width="6"></path>
+        <path d="M 10 186 L 262 186" stroke="#0DA192" stroke-width="6"></path>
+        <path d="M 90 20 L 90 272" stroke="#0DA192" stroke-width="6"></path>
+        <path d="M 176 20 L 176 272" stroke="#0DA192" stroke-width="6"></path>
+        <circle cx="50" cy="60" r="25" stroke="#fff" stroke-width="6" fill="transparent"></circle>
+        <svg style="display:none">
+          <path d="M 28 38 L 72 82" stroke="#545454" stroke-width="6"></path>
+          <path d="M 72 38 L 28 82" stroke="#545454" stroke-width="6"></path>
+        </svg>
+        <circle cx="133" cy="60" r="25" stroke="#fff" stroke-width="6" fill="transparent" style="display:none"></circle>
+        <svg >
+          <path d="M 111 38 L 155 82" stroke="#545454" stroke-width="6"></path>
+          <path d="M 155 38 L 111 82" stroke="#545454" stroke-width="6"></path>
+        </svg>
+        <circle cx="216" cy="60" r="25" stroke="#fff" stroke-width="6" fill="transparent" style="display:none"></circle>
+        <svg style="display:none">
+          <path d="M 194 38 L 238 82" stroke="#545454" stroke-width="6"></path>
+          <path d="M 238 38 L 194 82" stroke="#545454" stroke-width="6"></path>
+        </svg>
+        <circle cx="50" cy="143" r="25" stroke="#fff" stroke-width="6" fill="transparent" style="display:none"></circle>
+        <svg style="display:none">
+          <path d="M 28 121 L 72 165" stroke="#545454" stroke-width="6"></path>
+          <path d="M 72 121 L 28 165" stroke="#545454" stroke-width="6"></path>
+        </svg>
+        <circle cx="133" cy="143" r="25" stroke="#fff" stroke-width="6" fill="transparent" style="display:none"></circle>
+        <svg style="display:none">
+          <path d="M 111 121 L 155 165" stroke="#545454" stroke-width="6"></path>
+          <path d="M 155 121 L 111 165" stroke="#545454" stroke-width="6"></path>
+        </svg>
+        <circle cx="216" cy="143" r="25" stroke="#fff" stroke-width="6" fill="transparent" style="display:none"></circle>
+        <svg style="display:none">
+          <path d="M 194 121 L 238 165" stroke="#545454" stroke-width="6"></path>
+          <path d="M 238 121 L 194 165" stroke="#545454" stroke-width="6"></path>
+        </svg>
+        <circle cx="50" cy="226" r="25" stroke="#fff" stroke-width="6" fill="transparent" style="display:none"></circle>
+        <svg style="display:none">
+          <path d="M 28 204 L 72 248" stroke="#545454" stroke-width="6"></path>
+          <path d="M 72 204 L 28 248" stroke="#545454" stroke-width="6"></path>
+        </svg>
+        <circle cx="133" cy="226" r="25" stroke="#fff" stroke-width="6" fill="transparent" style="display:none"></circle>
+        <svg style="display:none">
+          <path d="M 111 204 L 155 248" stroke="#545454" stroke-width="6"></path>
+          <path d="M 155 204 L 111 248" stroke="#545454" stroke-width="6"></path>
+        </svg>
+        <circle cx="216" cy="226" r="25" stroke="#fff" stroke-width="6" fill="transparent" style="display:none"></circle>
+        <svg style="display:none">
+          <path d="M 194 204 L 238 248" stroke="#545454" stroke-width="6"></path>
+          <path d="M 238 204 L 194 248" stroke="#545454" stroke-width="6"></path>
+        </svg>
+      </svg>
+    </div>
+    <div class="buttons">
+      <button id="mode" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <i class="material-icons">people</i>
+      </button>
+      <button id="replay" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <i class="material-icons">replay</i>
+      </button>
+      <br>
+      <button id="x" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent count">
+        <i class="material-icons symbol">close</i>
+        <span class="point">-</span>
+      </button>
+      <button id="<o></o>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent count">
+        <i class="material-icons symbol">radio_button_unchecked</i>
+        <span class="point">-</span>
+      </button>
+    </div>
+  </body>
+  <script src="js/tic.js"></script>
+</html>
