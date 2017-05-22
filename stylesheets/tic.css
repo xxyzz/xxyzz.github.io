@@ -1,6 +1,12 @@
-@media only screen and (min-width: 320px) {
-  .board svg {
-    max-width: 550px;
+@media only screen and (min-width: 361px) {
+  table {
+    max-width: 500px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  table {
+    margin: 5%;
   }
 }
 
@@ -14,12 +20,21 @@ body {
   background: #14BDAC;
 }
 
-.board {
-  text-align: center;
+table {
+  margin-top: 5%;
+}
+
+td {
+  margin: 0;
+  padding: 0;
+}
+
+.pieces {
+  visibility: hidden;
 }
 
 .buttons {
-  margin-top: 5%;
+  margin-top: 8px;
   text-align: center;
 }
 
