@@ -4,28 +4,32 @@
   }
 }
 
-@media only screen and (max-width: 360px) {
-  table {
-    margin: 5%;
-  }
-}
-
 @media only screen and (min-width: 350px) {
   br {
     display: none;
   }
 }
 
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.board {
+  margin: 5% 5% 0;
+}
+
+svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 body {
   background: #14BDAC;
 }
 
-table {
-  margin-top: 5%;
-}
-
 td {
-  margin: 0;
   padding: 0;
 }
 
@@ -34,7 +38,6 @@ td {
 }
 
 .buttons {
-  margin-top: 8px;
   text-align: center;
 }
 
