@@ -142,9 +142,16 @@
       </table>
     </div>
     <div class="buttons">
-      <button id="mode" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-        <i class="material-icons">person</i>
+      <button id="drop_down" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <i class="material-icons">arrow_drop_up</i>
+        <span>Medium</span>
       </button>
+      <ul class="mdl-menu mdl-menu--top-left mdl-js-menu mdl-js-ripple-effect" for="drop_down">
+        <li id="easy" class="mdl-menu__item">Easy</li>
+        <li id="medium" class="mdl-menu__item">Medium</li>
+        <li id="impossible" class="mdl-menu__item">Impossible</li>
+        <li id="double" class="mdl-menu__item">Play against a friend</li>
+      </ul>
       <button id="restart" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         <i class="material-icons">replay</i>
       </button>

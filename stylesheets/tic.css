@@ -4,7 +4,7 @@
   }
 }
 
-@media only screen and (min-width: 350px) {
+@media only screen and (min-width: 500px) {
   br {
     display: none;
   }
@@ -39,14 +39,16 @@ td {
 
 .buttons {
   text-align: center;
+  position: relative;
 }
 
 .buttons button {
   margin: 5px;
+  text-transform: none;
 }
 
 .symbol {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .count {
