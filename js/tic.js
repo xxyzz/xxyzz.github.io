@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('toast').MaterialSnackbar.showSnackbar(data);
       document.getElementById('x').childNodes[3].textContent = x_point;
       document.getElementById('o').childNodes[3].textContent = o_point;
-      setTimeout(clear_board, 1000);
+      setTimeout(clear_board, 2000);
     }
   }
 
@@ -215,9 +215,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // get moves
   function get_moves(mode, board, avaliable_moves) {
     var run_move = 0, run_result = 3, depth = 0, scores = [], moves = [];
-
     if (mode === 0) {
       get_random_move(avaliable_moves);
+      console.log("move: " + run_move);
+      console.log("avaliable_moves: " + avaliable_moves);
       return run_move;
     } else if (mode === 1) {
       if (Math.random() < 0.5) {
@@ -234,17 +235,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // get random move
     function get_random_move(avaliable_moves) {
-      run_move = avaliable_moves[Math.floor(Math.random() * board.length)];
+      run_move = avaliable_moves[Math.floor(Math.random() * avaliable_moves.length)];
     }
 
     // get best move
-    function get_best_move(board, avaliable_moves) {}
+    function get_best_move(board, avaliable_moves) {
     //   if (avaliable_moves.length === 0 || run_result !== 3) {
     //     depths.push()
     //   } else if (moves.length === ) {
     //
     //   }
-    // }
+    }
   }
 
 });
