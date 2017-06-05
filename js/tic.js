@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // get moves
   function get_moves(mode, board, avaliable_moves) {
     var run_move = 0, run_result = 3, depth = 0, scores = [], moves = [];
-    
+
     if (mode === 0) {
       get_random_move(avaliable_moves);
       return run_move;
@@ -238,13 +238,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // get best move
-    function get_best_move(board, avaliable_moves) {
-      if (avaliable_moves.length === 0 || run_result !== 3) {
-        depths.push()
-      } else if (moves.length === ) {
-
-      }
-    }
+    function get_best_move(board, avaliable_moves) {}
+    //   if (avaliable_moves.length === 0 || run_result !== 3) {
+    //     depths.push()
+    //   } else if (moves.length === ) {
+    //
+    //   }
+    // }
   }
 
 });
