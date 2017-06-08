@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var checkerboard = [
     0, 0, 0, 0, 0, 0, 0, 0, 0
   ];
+  var corner = [0, 2, 6, 8];
 
   // set mode
   document.getElementById('easy').addEventListener('click', function() {
@@ -243,7 +244,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       // best move at beginning
       if (result === 4) {
-        var corner = [0, 2, 6, 8];
         return corner[Math.floor(Math.random() * 4)];
       }
       // win move
@@ -286,6 +286,117 @@ document.addEventListener('DOMContentLoaded', function() {
       } else if (checkerboard[8] === 0 && ((checkerboard[0] === human && checkerboard[4] === human) || (checkerboard[2] === human && checkerboard[5] === human) || (checkerboard[6] === human && checkerboard[7] === human))) {
         return 8;
       }
+      // creat fork 1
+      else if (checkerboard[0] === 0 && checkerboard[1] === computer && checkerboard[3] === computer) {
+        return 0;
+      } else if (checkerboard[2] === 0 && checkerboard[1] === computer && checkerboard[5] === computer) {
+        return 2;
+      } else if (checkerboard[6] === 0 && checkerboard[3] === computer && checkerboard[7] === computer) {
+        return 6;
+      } else if (checkerboard[8] === 0 && checkerboard[5] === computer && checkerboard[7] === computer) {
+        return 8;
+      }
+      // creat fork 2
+      else if (checkerboard[5] === computer && (checkerboard[0] === computer || checkerboard[2] == computer || checkerboard[6] === computer || checkerboard[8] === computer)) {
+        var avaliable_moves = [];
+        corner.forEach(function(val) {
+          if (checkerboard[val] === 0) {
+            avaliable_moves.push(val);
+          }
+        });
+        return avaliable_moves[Math.floor(Math.random() * avaliable_moves.length)];
+      }
+      // creat fork 3
+      else if (checkerboard[6] === 0 && ((checkerboard[7] === computer && checkerboard[0] === computer) || (checkerboard[3] === computer && checkerboard[8] === computer))) {
+        return 6;
+      } else if (checkerboard[2] === 0 && ((checkerboard[5] === computer && checkerboard[0] === computer) || (checkerboard[1] === computer && checkerboard[8] == computer))) {
+        return 2;
+      } else if (checkerboard[0] === 0 && ((checkerboard[2] === computer && checkerboard[3] === computer) || (checkerboard[1] == computer && checkerboard[6] == computer))) {
+        return 0;
+      } else if (checkerboard[8] === 0 && ((checkerboard[2] === computer && checkerboard[7] === computer) || (checkerboard[5] === computer && checkerboard[6] === computer))) {
+        return 8;
+      }
+      // block fork 1
+      else if (checkerboard[0] === 0 && checkerboard[1] === human && checkerboard[3] === human) {
+        return 0;
+      } else if (checkerboard[2] === 0 && checkerboard[1] === human && checkerboard[5] === human) {
+        return 2;
+      } else if (checkerboard[6] === 0 && checkerboard[3] === human && checkerboard[7] === human) {
+        return 6;
+      } else if (checkerboard[8] === 0 && checkerboard[5] === human && checkerboard[7] === human) {
+        return 8;
+      }
+      // block fork 2
+      else if (checkerboard[4] === human && checkerboard[0] === human) {
+        if (checkerboard[1] === 0 && checkerboard[3] === 0) {
+          if (Math.random < 0.5) {
+            return 1;
+          } else {
+            return 3;
+          }
+        }
+        if (checkerboard[1] === 0) {
+          return 1;
+        }
+        if (checkerboard[3] === 0) {
+          return 3;
+        }
+      }
+      else if (checkerboard[4] === human && checkerboard[2] === human) {
+        if (checkerboard[1] === 0 && checkerboard[5] === 0) {
+          if (Math.random < 0.5) {
+            return 1;
+          } else {
+            return 5;
+          }
+        }
+        if (checkerboard[1] === 0) {
+          return 1;
+        }
+        if (checkerboard[5] === 0) {
+          return 5;
+        }
+      }
+      else if (checkerboard[4] === human && checkerboard[6] === human) {
+        if (checkerboard[3] === 0 && checkerboard[7] === 0) {
+          if (Math.random < 0.5) {
+            return 7;
+          } else {
+            return 3;
+          }
+        }
+        if (checkerboard[7] === 0) {
+          return 7;
+        }
+        if (checkerboard[3] === 0) {
+          return 3;
+        }
+      }
+      else if (checkerboard[4] === human && checkerboard[8] === human) {
+        if (checkerboard[5] === 0 && checkerboard[7] === 0) {
+          if (Math.random < 0.5) {
+            return 5;
+          } else {
+            return 7;
+          }
+        }
+        if (checkerboard[5] === 0) {
+          return 5;
+        }
+        if (checkerboard[7] === 0) {
+          return 7;
+        }
+      }
+      // block fork 3
+      else if (checkerboard[6] === 0 && ((checkerboard[7] === human && checkerboard[0] === human) || (checkerboard[3] === human && checkerboard[8] === human))) {
+        return 6;
+      } else if (checkerboard[2] === 0 && ((checkerboard[5] === human && checkerboard[0] === human) || (checkerboard[1] === human && checkerboard[8] == human))) {
+        return 2;
+      } else if (checkerboard[0] === 0 && ((checkerboard[2] === human && checkerboard[3] === human) || (checkerboard[1] == human && checkerboard[6] == human))) {
+        return 0;
+      } else if (checkerboard[8] === 0 && ((checkerboard[2] === human && checkerboard[7] === human) || (checkerboard[5] === human && checkerboard[6] === human))) {
+        return 8;
+      }
       // center
       else if (checkerboard[4] === 0) {
         return 4;
@@ -315,10 +426,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       // empty corner
       else if (checkerboard[0] === 0 && checkerboard[2] === 0 && checkerboard[6] === 0 && checkerboard[8] === 0) {
-        var corner2 = [0, 2, 6, 8];
-        return corner2[Math.floor(Math.random() * 4)];
-      }
-      else if (checkerboard[0] === 0) {
+        return corner[Math.floor(Math.random() * 4)];
+      } else if (checkerboard[0] === 0) {
         return 0;
       } else if (checkerboard[2] === 0) {
         return 2;
