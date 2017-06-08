@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return 0;
       } else if (checkerboard[1] === 0 && ((checkerboard[0] === computer && checkerboard[2] === computer) || (checkerboard[4] === computer && checkerboard[7] === computer))) {
         return 1;
-      } else if (checkerboard[2] === 0 && ((checkerboard[0] === computer && checkerboard[1] === computer) || (checkerboard[5] === computer && checkerboard[8] === computer))) {
+      } else if (checkerboard[2] === 0 && ((checkerboard[0] === computer && checkerboard[1] === computer) || (checkerboard[5] === computer && checkerboard[8] === computer) || (checkerboard[4] === computer && checkerboard[6] === computer))) {
         return 2;
       } else if (checkerboard[3] === 0 && ((checkerboard[0] === computer && checkerboard[6] === computer) || (checkerboard[4] === computer && checkerboard[5] === computer))) {
         return 3;
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return 0;
       } else if (checkerboard[1] === 0 && ((checkerboard[0] === human && checkerboard[2] === human) || (checkerboard[4] === human && checkerboard[7] === human))) {
         return 1;
-      } else if (checkerboard[2] === 0 && ((checkerboard[0] === human && checkerboard[1] === human) || (checkerboard[5] === human && checkerboard[8] === human))) {
+      } else if (checkerboard[2] === 0 && ((checkerboard[0] === human && checkerboard[1] === human) || (checkerboard[5] === human && checkerboard[8] === human) || (checkerboard[4] === human && checkerboard[6] === human))) {
         return 2;
       } else if (checkerboard[3] === 0 && ((checkerboard[0] === human && checkerboard[6] === human) || (checkerboard[4] === human && checkerboard[5] === human))) {
         return 3;
@@ -314,6 +314,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return 6;
       }
       // empty corner
+      else if (checkerboard[0] === 0 && checkerboard[2] === 0 && checkerboard[6] === 0 && checkerboard[8] === 0) {
+        var corner2 = [0, 2, 6, 8];
+        return corner2[Math.floor(Math.random() * 4)];
+      }
       else if (checkerboard[0] === 0) {
         return 0;
       } else if (checkerboard[2] === 0) {
