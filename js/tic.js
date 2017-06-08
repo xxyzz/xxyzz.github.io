@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mode !== 0) {
       mode = 0;
       data = {
-        message: "Easy mode, you go first or click O button let computer go first"
+        message: "Easy level, start game or select player"
       };
       document.getElementById('toast').MaterialSnackbar.showSnackbar(data);
       document.getElementById('drop_down').children[1].textContent = "Easy";
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mode !== 1) {
       mode = 1;
       data = {
-        message: "Medium mode, you go first or click O button let computer go first"
+        message: "Medium level, start game or select player"
       };
       document.getElementById('toast').MaterialSnackbar.showSnackbar(data);
       document.getElementById('drop_down').children[1].textContent = "Medium";
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mode !== 2) {
       mode = 2;
       data = {
-        message: "Impossible mode, you go first or click O button let computer go first"
+        message: "Impossible level, start game or select player"
       };
       document.getElementById('toast').MaterialSnackbar.showSnackbar(data);
       document.getElementById('drop_down').children[1].textContent = "Impossible";
@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // restart button
   document.getElementById('restart').addEventListener('click', function() {
     restart();
-    mode = 1;
     user_first = true;
     data = {
       message: "Restart game"
@@ -109,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
           this.children[0].children[1].style.visibility = "visible";
           checkerboard[this.id] = 1;
           result = 3;
-          show_result(check_win());
+          show_result(check_win(checkerboard));
           x_turn = !x_turn;
           if (mode !== 3 && result === 3) {
             computer();
@@ -117,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
           this.children[0].children[0].style.visibility = "visible";
           checkerboard[this.id] = 2;
-          show_result(check_win());
+          show_result(check_win(checkerboard));
           x_turn = !x_turn;
           if (mode !== 3 && result === 3) {
             computer();
@@ -127,21 +126,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  function check_win() {
-    if ((checkerboard[0] === 1 && checkerboard[1] === 1 && checkerboard[2] === 1) || (checkerboard[3] === 1 && checkerboard[4] === 1 && checkerboard[5] === 1) ||
-      (checkerboard[6] === 1 && checkerboard[7] === 1 && checkerboard[8] === 1) || (checkerboard[0] === 1 && checkerboard[3] === 1 && checkerboard[6] === 1) ||
-      (checkerboard[1] === 1 && checkerboard[4] === 1 && checkerboard[7] === 1) || (checkerboard[2] === 1 && checkerboard[5] === 1 && checkerboard[8] === 1) ||
-      (checkerboard[0] === 1 && checkerboard[4] === 1 && checkerboard[8] === 1) || (checkerboard[2] === 1 && checkerboard[4] === 1 && checkerboard[6] === 1)) {
+  function check_win(board) {
+    if ((board[0] === 1 && board[1] === 1 && board[2] === 1) || (board[3] === 1 && board[4] === 1 && board[5] === 1) ||
+      (board[6] === 1 && board[7] === 1 && board[8] === 1) || (board[0] === 1 && board[3] === 1 && board[6] === 1) ||
+      (board[1] === 1 && board[4] === 1 && board[7] === 1) || (board[2] === 1 && board[5] === 1 && board[8] === 1) ||
+      (board[0] === 1 && board[4] === 1 && board[8] === 1) || (board[2] === 1 && board[4] === 1 && board[6] === 1)) {
       return 1; // x win
     } else if (
-      (checkerboard[0] === 2 && checkerboard[1] === 2 && checkerboard[2] === 2) || (checkerboard[3] === 2 && checkerboard[4] === 2 && checkerboard[5] === 2) ||
-      (checkerboard[6] === 2 && checkerboard[7] === 2 && checkerboard[8] === 2) || (checkerboard[0] === 2 && checkerboard[3] === 2 && checkerboard[6] === 2) ||
-      (checkerboard[1] === 2 && checkerboard[4] === 2 && checkerboard[7] === 2) || (checkerboard[2] === 2 && checkerboard[5] === 2 && checkerboard[8] === 2) ||
-      (checkerboard[0] === 2 && checkerboard[4] === 2 && checkerboard[8] === 2) || (checkerboard[2] === 2 && checkerboard[4] === 2 && checkerboard[6] === 2)
+      (board[0] === 2 && board[1] === 2 && board[2] === 2) || (board[3] === 2 && board[4] === 2 && board[5] === 2) ||
+      (board[6] === 2 && board[7] === 2 && board[8] === 2) || (board[0] === 2 && board[3] === 2 && board[6] === 2) ||
+      (board[1] === 2 && board[4] === 2 && board[7] === 2) || (board[2] === 2 && board[5] === 2 && board[8] === 2) ||
+      (board[0] === 2 && board[4] === 2 && board[8] === 2) || (board[2] === 2 && board[4] === 2 && board[6] === 2)
     ) {
       return 2; // y win
-    } else if (checkerboard.indexOf(0) === -1) {
+    } else if (board.indexOf(0) === -1) {
       return 0; // draw
+    } else {
+      return 3;
     }
   }
 
@@ -182,21 +183,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Computer Move
   function computer() {
-    var moves = 0;
-    var avaliable_position = get_available_positon(checkerboard);
-    var run_board = checkerboard.slice();
-    if (avaliable_position.length !== 0) {
-      moves = get_moves(mode, run_board, avaliable_position);
-      var show = document.getElementById(moves);
+    if (checkerboard.indexOf(0) !== -1) {
+      var computer_move = get_moves();
+      var show = document.getElementById(computer_move);
       if (user_first && !x_turn) {
-        checkerboard[moves] = 2;
+        checkerboard[computer_move] = 2;
         show.children[0].children[0].style.visibility = "visible";
       } else if (!user_first && x_turn) {
-        checkerboard[moves] = 1;
+        checkerboard[computer_move] = 1;
         show.children[0].children[1].style.visibility = "visible";
       }
       x_turn = !x_turn;
-      show_result(check_win());
+      show_result(check_win(checkerboard));
     } else {
       show_result(0);
     }
@@ -213,39 +211,136 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // get moves
-  function get_moves(mode, board, avaliable_moves) {
-    var run_move = 0, run_result = 3, depth = 0, scores = [], moves = [];
+  function get_moves() {
     if (mode === 0) {
-      get_random_move(avaliable_moves);
-      console.log("move: " + run_move);
-      console.log("avaliable_moves: " + avaliable_moves);
-      return run_move;
+      return get_random_move();
     } else if (mode === 1) {
       if (Math.random() < 0.5) {
-        get_random_move(avaliable_moves);
-        return run_move;
+        return get_random_move();
       } else {
-        run_move = get_best_move(board, avaliable_moves);
-        return run_move;
+        return get_best_move();
       }
     } else {
-      run_move = get_best_move(board, avaliable_moves);
-      return run_move;
+      return get_best_move();
     }
 
     // get random move
-    function get_random_move(avaliable_moves) {
-      run_move = avaliable_moves[Math.floor(Math.random() * avaliable_moves.length)];
+    function get_random_move() {
+      var avaliable_moves = get_available_positon(checkerboard);
+      return avaliable_moves[Math.floor(Math.random() * avaliable_moves.length)];
     }
 
     // get best move
-    function get_best_move(board, avaliable_moves) {
-    //   if (avaliable_moves.length === 0 || run_result !== 3) {
-    //     depths.push()
-    //   } else if (moves.length === ) {
-    //
-    //   }
+    function get_best_move() {
+      var computer = 0,
+        homan = 0;
+      if (user_first) {
+        computer = 2;
+        human = 1;
+      } else {
+        computer = 1;
+        human = 2;
+      }
+      // best move at beginning
+      if (result === 4) {
+        var corner = [0, 2, 6, 8];
+        return corner[Math.floor(Math.random() * 4)];
+      }
+      // win move
+      if (checkerboard[0] === 0 && ((checkerboard[1] === computer && checkerboard[2] === computer) || (checkerboard[3] === computer && checkerboard[6] === computer) || (checkerboard[4] === computer && checkerboard[8] === computer))) {
+        return 0;
+      } else if (checkerboard[1] === 0 && ((checkerboard[0] === computer && checkerboard[2] === computer) || (checkerboard[4] === computer && checkerboard[7] === computer))) {
+        return 1;
+      } else if (checkerboard[2] === 0 && ((checkerboard[0] === computer && checkerboard[1] === computer) || (checkerboard[5] === computer && checkerboard[8] === computer))) {
+        return 2;
+      } else if (checkerboard[3] === 0 && ((checkerboard[0] === computer && checkerboard[6] === computer) || (checkerboard[4] === computer && checkerboard[5] === computer))) {
+        return 3;
+      } else if (checkerboard[4] === 0 && ((checkerboard[0] === computer && checkerboard[8] === computer) || (checkerboard[1] === computer && checkerboard[7] === computer) || (checkerboard[2] === computer && checkerboard[6] === computer) || (checkerboard[3] === computer && checkerboard[5] === computer))) {
+        return 4;
+      } else if (checkerboard[5] === 0 && ((checkerboard[2] === computer && checkerboard[8] === computer) || (checkerboard[3] === computer && checkerboard[4] === computer))) {
+        return 5;
+      } else if (checkerboard[6] === 0 && ((checkerboard[0] === computer && checkerboard[3] === computer) || (checkerboard[2] === computer && checkerboard[4] === computer) || (checkerboard[7] === computer && checkerboard[8] === computer))) {
+        return 6;
+      } else if (checkerboard[7] === 0 && ((checkerboard[6] === computer && checkerboard[8] === computer) || (checkerboard[1] === computer && checkerboard[4] === computer))) {
+        return 7;
+      } else if (checkerboard[8] === 0 && ((checkerboard[0] === computer && checkerboard[4] === computer) || (checkerboard[2] === computer && checkerboard[5] === computer) || (checkerboard[6] === computer && checkerboard[7] === computer))) {
+        return 8;
+      }
+      // block win move
+      else if (checkerboard[0] === 0 && ((checkerboard[1] === human && checkerboard[2] === human) || (checkerboard[3] === human && checkerboard[6] === human) || (checkerboard[4] === human && checkerboard[8] === human))) {
+        return 0;
+      } else if (checkerboard[1] === 0 && ((checkerboard[0] === human && checkerboard[2] === human) || (checkerboard[4] === human && checkerboard[7] === human))) {
+        return 1;
+      } else if (checkerboard[2] === 0 && ((checkerboard[0] === human && checkerboard[1] === human) || (checkerboard[5] === human && checkerboard[8] === human))) {
+        return 2;
+      } else if (checkerboard[3] === 0 && ((checkerboard[0] === human && checkerboard[6] === human) || (checkerboard[4] === human && checkerboard[5] === human))) {
+        return 3;
+      } else if (checkerboard[4] === 0 && ((checkerboard[0] === human && checkerboard[8] === human) || (checkerboard[1] === human && checkerboard[7] === human) || (checkerboard[2] === human && checkerboard[6] === human) || (checkerboard[3] === human && checkerboard[5] === human))) {
+        return 4;
+      } else if (checkerboard[5] === 0 && ((checkerboard[2] === human && checkerboard[8] === human) || (checkerboard[3] === human && checkerboard[4] === human))) {
+        return 5;
+      } else if (checkerboard[6] === 0 && ((checkerboard[0] === human && checkerboard[3] === human) || (checkerboard[2] === human && checkerboard[4] === human) || (checkerboard[7] === human && checkerboard[8] === human))) {
+        return 6;
+      } else if (checkerboard[7] === 0 && ((checkerboard[6] === human && checkerboard[8] === human) || (checkerboard[1] === human && checkerboard[4] === human))) {
+        return 7;
+      } else if (checkerboard[8] === 0 && ((checkerboard[0] === human && checkerboard[4] === human) || (checkerboard[2] === human && checkerboard[5] === human) || (checkerboard[6] === human && checkerboard[7] === human))) {
+        return 8;
+      }
+      // center
+      else if (checkerboard[4] === 0) {
+        return 4;
+      }
+      // choose eage at beginning
+      else if (user_first && (same_array(checkerboard, [1, 0, 0, 0, 2, 0, 0, 0, 1]) || same_array(checkerboard, [0, 0, 1, 0, 2, 0, 1, 0, 0]))) {
+        var eage = [1, 3, 5, 7];
+        return eage[Math.floor(Math.random() * 4)];
+      }
+      // opposite corner
+      else if (!user_first && same_array(checkerboard, [1, 0, 0, 0, 2, 0, 0, 0, 0])) {
+        return 8;
+      } else if (!user_first && same_array(checkerboard, [0, 0, 1, 0, 2, 0, 0, 0, 0])) {
+        return 6;
+      } else if (!user_first && same_array(checkerboard, [0, 0, 0, 0, 2, 0, 1, 0, 0])) {
+        return 2;
+      } else if (!user_first && same_array(checkerboard, [0, 0, 0, 0, 2, 0, 0, 0, 1])) {
+        return 0;
+      } else if (checkerboard[0] === 0 && (checkerboard[2] === human || checkerboard[6] === human)) {
+        return 0;
+      } else if (checkerboard[8] === 0 && (checkerboard[2] === human || checkerboard[6] === human)) {
+        return 8;
+      } else if (checkerboard[2] === 0 && (checkerboard[0] === human || checkerboard[8] === human)) {
+        return 2;
+      } else if (checkerboard[6] === 0 && (checkerboard[0] === human || checkerboard[8] === human)) {
+        return 6;
+      }
+      // empty corner
+      else if (checkerboard[0] === 0) {
+        return 0;
+      } else if (checkerboard[2] === 0) {
+        return 2;
+      } else if (checkerboard[6] === 0) {
+        return 6;
+      } else if (checkerboard[8] === 0) {
+        return 8;
+      }
+      // empty side
+      else if (checkerboard[1] === 0) {
+        return 1;
+      } else if (checkerboard[3] === 0) {
+        return 3;
+      } else if (checkerboard[7] === 0) {
+        return 7;
+      } else if (checkerboard[7] === 0) {
+        return 7;
+      }
     }
   }
 
+  function same_array(a, b) {
+    for (var i = a.length; i--;) {
+      if (a[i] !== b[i])
+        return false;
+    }
+    return true;
+  }
 });
