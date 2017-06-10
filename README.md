@@ -31,3 +31,9 @@
 [A simple Calculator](https://xxyzz.github.io/cal)
 
 ![logo](images/cal/cal.ico)
+
+# Tic Tac Toe
+
+[You can't beat me](https://xxyzz.github.io/tic)
+
+![logo](images/tic/Tic-Tac-Toe-Game-grey.ico)
