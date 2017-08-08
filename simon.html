@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Simon's a computer, Simon has a brain, you either do what Simon says or else go down the drain. Freecodecamp advanced front end development project.">
-    <meta property="og:title" content="Simon® game">
+    <meta property="og:title" content="Simon game">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://xxyzz.github.io/images/simon/simon.png">
+    <meta property="og:url" content="https://xxyzz.github.io/simon">
+    <meta property="og:image" content="images/simon/simon.png">
     <meta property="og:description" content="Simon's a computer, Simon has a brain, you either do what Simon says or else go down the drain. Freecodecamp advanced front end development project.">
     <meta name="theme-color" content="#00bcd4">
     <link rel="shortcut icon" href="images/simon/favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.yellow-red.min.css"/>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <title>Simon® game</title>
+    <title>Simon game</title>
+    <link rel="stylesheet" href="stylesheets/simon.css">
+    <script src="js/simon.js"></script>
     <script>
       (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -32,8 +35,6 @@
       ga('create', 'UA-98608216-1', 'auto');
       ga('send', 'pageview');
     </script>
-    <link rel="stylesheet" href="stylesheets/simon.css">
-    <script src="js/"></script>
   </head>
   <body>
     <div class="game_board mdl-shadow--8dp">
@@ -54,21 +55,21 @@
         </div>
         <div class="row">
           <div class="buttons inline">
-            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch1">
-              <input type="checkbox" id="switch1" class="mdl-switch__input">
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="power">
+              <input type="checkbox" id="power" class="mdl-switch__input">
               <span class="mdl-switch__label"></span>
             </label>
             <h2 class="label">Power</h2>
           </div>
           <div class="buttons inline">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--icon">
+            <button id="start" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-button--icon">
               <i class="material-icons">play_arrow</i>
             </button>
             <h2 class="label">Start</h2>
           </div>
           <div class="buttons inline">
-            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch2">
-              <input type="checkbox" id="switch2" class="mdl-switch__input">
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="strict">
+              <input type="checkbox" id="strict" class="mdl-switch__input">
               <span class="mdl-switch__label"></span>
             </label>
             <h2 class="label">Strict</h2>
