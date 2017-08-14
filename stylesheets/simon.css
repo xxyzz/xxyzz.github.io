@@ -45,20 +45,12 @@ div {
   border-bottom-width: 6px;
 }
 
-.green:active {
-  background-color: #C8E6C9;
-}
-
 .red {
   background-color: #f44336;
   border-top-right-radius: 100%;
   border: 12px solid #fff;
   border-left-width: 6px;
   border-bottom-width: 6px;
-}
-
-.red:active {
-  background-color: #FFCDD2;
 }
 
 .yellow {
@@ -69,10 +61,6 @@ div {
   border-top-width: 6px;
 }
 
-.yellow:active {
-  background-color: #FFF9C4;
-}
-
 .blue {
   background-color: #2196f3;
   border-bottom-right-radius: 100%;
@@ -81,13 +69,12 @@ div {
   border-top-width: 6px;
 }
 
-.blue:active {
-  background-color: #BBDEFB;
-}
-
 .push {
   width: 200px;
   height: 200px;
+}
+
+.clickable {
   cursor: pointer;
 }
 
