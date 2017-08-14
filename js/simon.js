@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var power = false,
     start = false,
     strict = false,
+    play_array = [],
+    user_array = [],
+    press_right = true,
+    finish_press = true,
     audio1 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
     audio2 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
     audio3 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
@@ -15,36 +19,35 @@ document.addEventListener('DOMContentLoaded', function() {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  function press_green() {
+  async function press_green() {
     green_button.style.backgroundColor = "#C8E6C9";
     audio1.play();
-    setTimeout(function() {
-      green_button.style.backgroundColor = "#4caf50";
-    }, 100);
+    await sleep(200);
+    green_button.style.backgroundColor = "#4caf50";
   }
 
-  function press_red() {
+  async function press_red() {
     red_button.style.backgroundColor = "#FFCDD2";
     audio2.play();
-    setTimeout(function() {
-      red_button.style.backgroundColor = "#f44336";
-    }, 100);
+    await sleep(200);
+    red_button.style.backgroundColor = "#f44336";
+
   }
 
-  function press_yellow() {
+  async function press_yellow() {
     yellow_button.style.backgroundColor = "#FFF9C4";
     audio3.play();
-    setTimeout(function() {
-      yellow_button.style.backgroundColor = "#ffeb3b";
-    }, 100);
+    await sleep(200);
+    yellow_button.style.backgroundColor = "#ffeb3b";
+
   }
 
-  function press_blue() {
+  async function press_blue() {
     blue_button.style.backgroundColor = "#BBDEFB";
     audio4.play();
-    setTimeout(function() {
-      blue_button.style.backgroundColor = "#2196f3";
-    }, 100);
+    await sleep(200);
+    blue_button.style.backgroundColor = "#2196f3";
+
   }
 
 
@@ -58,11 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('start').addEventListener('click', function() {
     start = true;
-    click_play_audio();
     clickable();
-
-    play_audio([0, 1, 2, 3]);
-
+    game();
   });
 
   document.getElementById('strict').addEventListener('click', function() {
@@ -70,28 +70,38 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // User click button effect
-  function click_play_audio() {
-    green_button.addEventListener('click', function() {
-      if (power && start) {
-        press_green();
-      }
-    });
-    red_button.addEventListener('click', function() {
-      if (power && start) {
-        press_red();
-      }
-    });
-    yellow_button.addEventListener('click', function() {
-      if (power && start) {
-        press_yellow();
-      }
-    });
-    blue_button.addEventListener('click', function() {
-      if (power && start) {
-        press_blue();
-      }
-    });
-  }
+  green_button.addEventListener('click', function() {
+    if (power && start) {
+      press_green();
+      user_array.push(0);
+      check_right();
+      game();
+    }
+  });
+  red_button.addEventListener('click', function() {
+    if (power && start) {
+      press_red();
+      user_array.push(1);
+      check_right();
+      game();
+    }
+  });
+  yellow_button.addEventListener('click', function() {
+    if (power && start) {
+      press_yellow();
+      user_array.push(2);
+      check_right();
+      game();
+    }
+  });
+  blue_button.addEventListener('click', function() {
+    if (power && start) {
+      press_blue();
+      user_array.push(3);
+      check_right();
+      game();
+    }
+  });
 
   // Computer plays audio function
   async function play_audio(array) {
@@ -111,8 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
           break;
         default:
       }
-      if (i - 1 != array.length) {
-        await sleep(100);
+      if (i + 1 != array.length) {
+        await sleep(500);
       }
     }
   }
@@ -126,6 +136,36 @@ document.addEventListener('DOMContentLoaded', function() {
         button.classList.remove("clickable");
       }
     });
+  }
+
+  function check_right() {
+    press_right = true;
+    for (let i = 0; i < user_array.length; i++) {
+      if (user_array[i] != play_array[i]) {
+        press_right = false;
+      }
+    }
+    if (user_array.length == play_array.length) {
+      finish_press = true;
+    }
+  }
+
+  async function game() {
+    if (power && start) {
+      if (press_right && finish_press) {
+        play_array.push(Math.floor(Math.random() * 4));
+        console.log("play_array: " + play_array);
+        console.log("user_array: " + user_array);
+        finish_press = false;
+        user_array = [];
+        await sleep(800);
+        play_audio(play_array);
+      } else if (!press_right) {
+        user_array = [];
+        await sleep(800);
+        play_audio(play_array);
+      }
+    }
   }
 
 });
