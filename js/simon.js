@@ -2,10 +2,13 @@ document.addEventListener('DOMContentLoaded', function() {
   var power = false,
     start = false,
     strict = false,
+    date = [],
     play_array = [],
     user_array = [],
+    user_press = [],
     press_right = true,
     finish_press = true,
+    count = 0,
     audio1 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
     audio2 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
     audio3 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
@@ -56,22 +59,32 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!power) {
       start = false;
     }
+    reset();
     clickable();
   });
 
   document.getElementById('start').addEventListener('click', function() {
     start = true;
     clickable();
+    reset();
     game();
   });
 
   document.getElementById('strict').addEventListener('click', function() {
     strict = !strict;
+    if (strict) {
+      data = {
+        message: "Enable strict mode"
+      };
+      document.getElementById('toast').MaterialSnackbar.showSnackbar(data);
+    }
+    reset();
+    game();
   });
 
   // User click button effect
   green_button.addEventListener('click', function() {
-    if (power && start) {
+    if (power && start && user_press) {
       press_green();
       user_array.push(0);
       check_right();
@@ -79,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   red_button.addEventListener('click', function() {
-    if (power && start) {
+    if (power && start && user_press) {
       press_red();
       user_array.push(1);
       check_right();
@@ -87,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   yellow_button.addEventListener('click', function() {
-    if (power && start) {
+    if (power && start && user_press) {
       press_yellow();
       user_array.push(2);
       check_right();
@@ -95,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   blue_button.addEventListener('click', function() {
-    if (power && start) {
+    if (power && start && user_press) {
       press_blue();
       user_array.push(3);
       check_right();
@@ -105,6 +118,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Computer plays audio function
   async function play_audio(array) {
+    user_press = false;
+    clickable();
     for (let i = 0; i < array.length; i++) {
       switch (array[i]) {
         case 0:
@@ -122,15 +137,17 @@ document.addEventListener('DOMContentLoaded', function() {
         default:
       }
       if (i + 1 != array.length) {
-        await sleep(500);
+        await sleep(625);
       }
     }
+    user_press = true;
+    clickable();
   }
 
   // Add or remove mouse pointer
   function clickable() {
     Array.prototype.forEach.call(document.getElementsByClassName('push'), function(button) {
-      if (power && start) {
+      if (power && start && user_press) {
         button.classList.add("clickable");
       } else {
         button.classList.remove("clickable");
@@ -147,25 +164,64 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if (user_array.length == play_array.length) {
       finish_press = true;
+    } else {
+      finish_press = false;
     }
   }
 
   async function game() {
     if (power && start) {
       if (press_right && finish_press) {
-        play_array.push(Math.floor(Math.random() * 4));
-        console.log("play_array: " + play_array);
-        console.log("user_array: " + user_array);
-        finish_press = false;
+        if (user_array.length != 20) {
+          play_array.push(Math.floor(Math.random() * 4));
+          update_count();
+          finish_press = false;
+          user_array = [];
+          await sleep(900);
+          play_audio(play_array);
+        } else {
+          data = {
+            message: "You win!"
+          };
+          document.getElementById('toast').MaterialSnackbar.showSnackbar(data);
+          reset();
+          await sleep(900);
+          game();
+        }
+      } else if (!press_right && !strict) {
+        data = {
+          message: "Wrong button! Try again"
+        };
+        document.getElementById('toast').MaterialSnackbar.showSnackbar(data);
         user_array = [];
-        await sleep(800);
+        await sleep(900);
         play_audio(play_array);
-      } else if (!press_right) {
+      } else if (!press_right && strict) {
+        data = {
+          message: "Wrong button! Start a new game"
+        };
+        document.getElementById('toast').MaterialSnackbar.showSnackbar(data);
         user_array = [];
-        await sleep(800);
-        play_audio(play_array);
+        reset();
+        await sleep(900);
+        game();
       }
     }
+  }
+
+  function update_count() {
+    count = play_array.length;
+    document.getElementById('count').textContent = count;
+  }
+
+  function reset() {
+    play_array = [];
+    user_array = [];
+    press_right = true;
+    user_press = false;
+    finish_press = true;
+    count = 0;
+    document.getElementById('count').textContent = "- -";
   }
 
 });
