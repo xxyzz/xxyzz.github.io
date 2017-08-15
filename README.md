@@ -1,39 +1,21 @@
-# Ancient Roman Quotes
+# FreeCodeCamp Front End Development Projects
 
-[Veni, vidi, vici.](https://xxyzz.github.io)
+[It's REAL!](https://xxyzz.github.io/manbearpig)
 
-![logo](images/quote/android-chrome-192x192.png)
+[I am Lorde](https://xxyzz.github.io/randy)
 
-# Air Quality
+[Ancient Roman Quotes](https://xxyzz.github.io/quote)
 
-[Fuck smog!](https://xxyzz.github.io/air)
+[Air Quality](https://xxyzz.github.io/air)
 
-![logo](images/air/android-chrome-96x96.png)
-
-# Wikipedia Searcher
-
-[Search Wikipedia](https://xxyzz.github.io/wiki)
-
-![logo](images/wiki/apple-touch-icon.png)
-
-# Tomato Clock
+[Wikipedia Searcher](https://xxyzz.github.io/wiki)
 
 [Tomato Clock](https://xxyzz.github.io/tomato)
 
-![logo](images/tomato/tomato.ico)
-
-# Twitchtv
-
 [Twitchtv](https://xxyzz.github.io/twitch)
 
-# Javascript Calculator
+[JavaScript Calculator](https://xxyzz.github.io/cal)
 
-[A simple Calculator](https://xxyzz.github.io/cal)
+[Tic-tac-toe](https://xxyzz.github.io/tic)
 
-![logo](images/cal/cal.ico)
-
-# Tic Tac Toe
-
-[You can't beat me](https://xxyzz.github.io/tic)
-
-![logo](images/tic/Tic-Tac-Toe-Game-grey.ico)
+[Simon Game](https://xxyzz.github.io/simon)
