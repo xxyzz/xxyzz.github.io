@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Show random ancient roman quotes, freecodecamp intermediate front end development project.">
+    <meta property="og:title" content="Ancient Roman Quotes">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://xxyzz.github.io/images/quote/android-chrome-192x192.png">
+    <meta property="og:description" content="Show random ancient roman quotes, freecodecamp intermediate front end development project.">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="images/quote/favicon.ico">
+    <meta name="theme-color" content="#ff5722">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-deep_orange.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/quote.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/quote.js"></script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        },
+        i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-98608216-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <title>Ancient Roman Quotes</title>
+  </head>
+  <body>
+    <div class="card-wide mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Julius Caesar</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <i class="fa fa-quote-left"></i>
+        <span id="text">Veni, vidi, vici.</span>
+        <i class="fa fa-quote-right"></i>
+      </div>
+      <div class="mdl-card__actions mdl-card--border buttons">
+        <a class="mdl-button mdl-js-button mdl-button--icon mdl-button--accent" id="wiki" title="Read his quotes at Wikiquote" href="https://en.wikiquote.org/wiki/Julius_Caesar" target="_blank">
+          <i class="fa fa-wikipedia-w"></i>
+        </a>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="new-quote">New quote</button>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="share" title="Share Via Telegram">
+          <i class="material-icons">share</i>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

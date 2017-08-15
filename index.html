@@ -4,22 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Show random ancient roman quotes, freecodecamp intermediate front end development project.">
-    <meta property="og:title" content="Ancient Roman Quotes">
+    <meta name="description" content="xxyzz's freecodecamp projects">
+    <meta property="og:title" content="xxyzz">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://xxyzz.github.io/images/quote/android-chrome-192x192.png">
-    <meta property="og:description" content="Show random ancient roman quotes, freecodecamp intermediate front end development project.">
-    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon.png">
-    <link rel="shortcut icon" href="images/quote/favicon.ico">
-    <meta name="theme-color" content="#ff5722">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta property="og:image" content="https://xxyzz.github.io/images/">
+    <meta property="og:description" content="xxyzz's freecodecamp projects">
+    <meta name="theme-color" content="#3F51B5">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-deep_orange.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-yellow.min.css"/>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <link rel="stylesheet" href="stylesheets/quote.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/quote.js"></script>
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <title>xxyzz</title>
     <script>
       (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -37,29 +35,116 @@
       ga('create', 'UA-98608216-1', 'auto');
       ga('send', 'pageview');
     </script>
-    <title>Ancient Roman Quotes</title>
   </head>
   <body>
-    <div class="card-wide mdl-card mdl-shadow--2dp">
-      <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Julius Caesar</h2>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">xxyzz</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="https://github.com/xxyzz/xxyzz.github.io" target="_blank">Github</a>
+            <a class="mdl-navigation__link" href="https://xxyzz.me" target="_blank">Blog</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">xxyzz</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="https://github.com/xxyzz/xxyzz.github.io" target="_blank">Github</a>
+          <a class="mdl-navigation__link" href="https://xxyzz.me" target="_blank">Blog</a>
+        </nav>
       </div>
-      <div class="mdl-card__supporting-text">
-        <i class="fa fa-quote-left"></i>
-        <span id="text">Veni, vidi, vici.</span>
-        <i class="fa fa-quote-right"></i>
-      </div>
-      <div class="mdl-card__actions mdl-card--border buttons">
-        <a class="mdl-button mdl-js-button mdl-button--icon mdl-button--accent" id="wiki" title="Read his quotes at Wikiquote" href="https://en.wikiquote.org/wiki/Julius_Caesar" target="_blank">
-          <i class="fa fa-wikipedia-w"></i>
-        </a>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="new-quote">New quote</button>
-      </div>
-      <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="share" title="Share Via Telegram">
-          <i class="material-icons">share</i>
-        </button>
-      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          <div class="mdl-grid">
+            <h2>FreeCodeCamp Front End Development Projects</h2>
+            <div class="mdl-cell mdl-cell--4-col">
+              <a href="quote.html">
+                <div class="card-image mdl-card mdl-shadow--2dp" style="background: url('images/quote/Screenshot.png') center / cover;">
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions">
+                    <span class="card-image__filename">Ancient Roman Quotes</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+              <a href="air.html">
+                <div class="card-image mdl-card mdl-shadow--2dp" style="background: url('images/air/Screenshot.png') center / cover;">
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions">
+                    <span class="card-image__filename">Air Quality</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+              <a href="wiki.html">
+                <div class="card-image mdl-card mdl-shadow--2dp" style="background: url('images/wiki/Screenshot.png') center / cover;">
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions">
+                    <span class="card-image__filename">Wikipedia Searcher</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+              <a href="twitch.html">
+                <div class="card-image mdl-card mdl-shadow--2dp" style="background: url('images/twitch/Screenshot.png') center / cover;">
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions">
+                    <span class="card-image__filename">Twitchtv</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+              <a href="cal.html">
+                <div class="card-image mdl-card mdl-shadow--2dp" style="background: url('images/cal/Screenshot.png') center / cover;">
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions">
+                    <span class="card-image__filename">JavaScript Calculator</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+              <a href="tomato.html">
+                <div class="card-image mdl-card mdl-shadow--2dp" style="background: url('images/tomato/Screenshot.png') center / cover;">
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions">
+                    <span class="card-image__filename">Tomato Clock</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+              <a href="tic.html">
+                <div class="card-image mdl-card mdl-shadow--2dp" style="background: url('images/tic/Screenshot.png') center / cover;">
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions">
+                    <span class="card-image__filename">Tic-tac-toe</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+              <a href="simon.html">
+                <div class="card-image mdl-card mdl-shadow--2dp" style="background: url('images/simon/Screenshot.png') center / cover;">
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions">
+                    <span class="card-image__filename">Simon Game</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   </body>
 </html>

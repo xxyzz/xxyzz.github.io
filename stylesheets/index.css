@@ -1,0 +1,30 @@
+.mdl-card {
+  max-width: 350px;
+  margin: 2% auto;
+}
+.card-image > .mdl-card__actions {
+  height: 52px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+}
+.card-image__filename {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2, .mdl-grid, .mdl-cell {
+  justify-content: center;
+}
+
+.mdl-cell {
+  margin: 0.5%;
+}
+
+body {
+  background-color: #90CAF9;
+}
