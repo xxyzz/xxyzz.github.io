@@ -1,5 +1,5 @@
 .mdl-card {
-  max-width: 350px;
+  max-width: 100%;
   margin: 2% auto;
 }
 .card-image > .mdl-card__actions {
@@ -17,12 +17,12 @@ a {
   text-decoration: none;
 }
 
-h2, .mdl-grid, .mdl-cell {
+.mdl-grid, .mdl-cell {
   justify-content: center;
 }
 
-.mdl-cell {
-  margin: 0.5%;
+h3 {
+  text-align: center;
 }
 
 body {
