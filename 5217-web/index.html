@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>5217 - Web</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection" />
+
+  <!-- Metadata -->
+  <meta property="og:url" content="https://jacksonhvisuals.github.io/5217-web" />
+  <meta property="og:image" content="https://jacksonhvisuals.github.io/images/icon.png" />
+  <meta property="og:description" content="5217 the simple productivity timer based on 52/17 work cycle described by the muse." />
+  <meta name="description" content="5217 the simple productivity timer based on 52/17 work cycle described by the muse." />
+  <meta name="author" content="Jackson Hayes" />
+  <meta name="keywords" content="Android, customize, timer, productivity, tool, productivity tool, free" />
+  <meta property="og:title" content="5217 - Web" />
+  <meta property="og:type" content="website" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/manifest.json">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#237aff">
+  <link rel="shortcut icon" href="favicon/favicon.ico">
+  <meta name="msapplication-config" content="favicon/browserconfig.xml">
+  <meta name="theme-color" content="#237aff">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-102200622-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-102200622-5');
+  </script>
+
+</head>
+
+<body>
+  <div id="layer1div">
+    <div class="row">
+      <div class="valign-wrapper">
+        <div class="col s12 center" style="margin-top: 50px;">
+              <p id="breakMessage1">This is a break message.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <div class="col s12 center" style="margin-top: 80px;">
+          <p id="heroNumber1">52</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <div class="col s12">
+          <div class="fixed-action-btn threeDots">
+            <a class="material-icons dropdown-button modal-trigger" id="moreButton1" href="#about-modal">info_outline</a>
+          </div>
+
+          <div class="fixed-action-btn">
+            <button class="mdc-fab material-icons" id="timerfab1" aria-label="Start">
+              <img class="fabicon fabimage" src="images/ic_5217.svg" alt="5217 icon">
+            </button>
+
+            <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.franco.timer&text=5217%20is%20an%20amazing%20app%20for%20productivity%21%20Try%20it%20today%21&hashtags=%235217" rel="noopener noreferrer" target="_blank">
+              <button class="mdc-fab material-icons hide" id="sharefab1">
+              <span class="mdc-fab__icon fabiconshare">
+                share
+              </span>
+            </button></a>
+          </div>
+          <div id="pulsingDotContainer1">
+            <div class="hide fixed-action-btn" id="pulsingDot1"></div>
+          </div>
+          <div class="fixed-action-btn killButton">
+            <i class="material-icons inactive-element" id="resetButton1">settings_backup_restore</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="layer2div">
+    <div class="row">
+      <div class="valign-wrapper">
+        <div class="col s12 center" style="margin-top: 50px;">
+              <p id="breakMessage2">This is a break message.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <div class="col s12 center" style="margin-top: 80px;">
+          <p id="heroNumber2">52</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <div class="col s12">
+          <div class="fixed-action-btn threeDots">
+            <i class="material-icons dropdown-button modal-trigger" id="moreButton2">info_outline</i>
+          </div>
+          <div class="fixed-action-btn">
+            <button class="mdc-fab material-icons" id="timerfab2" aria-label="Start">
+              <img class="fabicon fabimage" src="images/ic_5217.svg" alt="5217 icon">
+            </button>
+
+            <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.franco.timer&text=5217%20is%20an%20amazing%20app%20for%20productivity%21%20Try%20it%20today%21&hashtags=%235217" rel="noopener noreferrer" target="_blank"><button class="mdc-fab material-icons hide" id="sharefab2">
+                        <span class="mdc-fab__icon fabiconshare">
+                            share
+                        </span>
+                    </button></a>
+          </div>
+
+          <div id="pulsingDotContainer2">
+            <div class="hide fixed-action-btn" id="pulsingDot2"></div>
+          </div>
+          <div class="fixed-action-btn killButton">
+            <i class="material-icons inactive-element" id="resetButton2">settings_backup_restore</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside id="my-mdc-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="my-mdc-dialog-label" aria-describedby="my-mdc-dialog-description">
+    <div class="mdc-dialog__surface">
+      <header class="mdc-dialog__header">
+        <h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+                  About 5217 Web
+              </h2>
+      </header>
+      <section id="my-mdc-dialog-description" class="mdc-dialog__body">
+        5217 is a simple productivity timer based on 52/17 work cycle described by <i>the muse</i> <a rel="noopener noreferrer" target="_blank" href="https://www.themuse.com/advice/the-rule-of-52-and-17-its-random-but-it-ups-your-productivity">here</a>.
+        <br>
+        <br>Designed with care by <a rel="noopener noreferrer" target="_blank" href="https://www.liamspradlin.com/">Liam Spradlin</a>
+        <br>Android app magically developed by <a rel="noopener noreferrer" target="_blank" href="https://twitter.com/franciscof_1990">Francisco Franco</a>
+        <br>Web app enthusiastically coded by <a rel="noopener noreferrer" target="_blank" href="https://jacksonhayes.me">Jackson Hayes</a>
+        <br>
+        <br>Get the Android app <a href="https://play.google.com/store/apps/details?id=com.franco.timer" rel="noopener noreferrer" target="_blank">here</a>.
+        <br><br><div id="testingcontainer"><a href="https://medium.com/@jacksonhvisuals/a-bit-about-5217-web-3924679d65d2" rel="noopener noreferrer" target="_blank"><span>alpha version 0.1.7</span></a></div>
+      </section>
+      <footer class="mdc-dialog__footer">
+        <a class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel" href="https://github.com/jacksonhvisuals/5217-web/issues" rel="noopener noreferrer" target="_blank">Report a bug</a>
+        <a class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Gotcha</a>
+      </footer>
+    </div>
+    <div class="mdc-dialog__backdrop"></div>
+  </aside>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="js/5217.js"></script>
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script>
+    window.mdc.autoInit();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      $('.modal').modal();
+    });
+    const MDCDialog = mdc.dialog.MDCDialog;
+    const MDCDialogFoundation = mdc.dialog.MDCDialogFoundation;
+    const util = mdc.dialog.util;
+    var dialog = new mdc.dialog.MDCDialog(document.querySelector('#my-mdc-dialog'));
+
+    dialog.listen('MDCDialog:accept', function() {
+      console.log('accepted');
+    })
+
+    dialog.listen('MDCDialog:cancel', function() {
+      console.log('canceled');
+    })
+
+    document.querySelector('#moreButton1').addEventListener('click', function(evt) {
+      dialog.lastFocusedTarget = evt.target;
+      dialog.show();
+    })
+    document.querySelector('#moreButton2').addEventListener('click', function(evt) {
+      dialog.lastFocusedTarget = evt.target;
+      dialog.show();
+    })
+  </script>
+
+</body>
+
+</html>
