@@ -448,8 +448,8 @@ function notify(type, remainingMinutes) {
     } else {
       navigator.serviceWorker.ready.then(function(registration) {
         registration.showNotification('Time for a break', {
-          icon: 'images/icon.png',
-          badge: 'images/ic_5217.svg',
+          icon: '/5217-web/images/icon.png',
+          badge: '/5217-web/images/ic_5217.svg',
           body: remainingMinutes + " minutes left - " + chooseBreakMessage()
         });
       });
@@ -460,8 +460,8 @@ function notify(type, remainingMinutes) {
     } else {
       navigator.serviceWorker.ready.then(function(registration) {
         registration.showNotification('Keep working!', {
-          icon: 'images/icon.png',
-          badge: 'images/ic_5217.svg',
+          icon: '/5217-web/images/icon.png',
+          badge: '/5217-web/images/ic_5217.svg',
           body: remainingMinutes + " minutes left in this cycle"
         });
       });
