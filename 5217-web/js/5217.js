@@ -432,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js')
+  navigator.serviceWorker.register('/5217-web/service-worker.js')
   .then(function(registration) {
     console.log('Service worker successfully registered.');
   })
