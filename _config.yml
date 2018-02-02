@@ -1,0 +1,5 @@
+baseurl: ""
+url: "https://xxyzz.gitub.io"
+
+plugins:
+  - jekyll-sitemap
