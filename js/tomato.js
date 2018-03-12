@@ -1,22 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var run = false,
-    timeout;
-  var work = true;
-  var reset = false;
+  var run = false, timeout = 0, currentTime = 0, endTime = 0, work = true, reset = false, worktime = 25, restime = 5;
   var countElement = document.getElementById('time');
+  var startButton = document.getElementById('start');
 
   function countDown() {
-    timeout = 25 * 60 * 1000;
-    var currentTime = (new Date()).getTime();
-    var endTime = (new Date()).getTime() + timeout;
-
+    if (timeout == currentTime == endTime == 0) {
+      timeout = worktime * 60 * 1000;
+      currentTime = (new Date()).getTime();
+      endTime = (new Date()).getTime() + timeout;
+    }
     var updater = function() {
-
       if (reset) {
-        timeout = 25 * 60 * 1000;
+        resetFunction();
         reset = false;
-        currentTime = (new Date()).getTime();
-        endTime = (new Date()).getTime() + timeout;
       }
 
       if (run && currentTime < endTime) {
@@ -30,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (currentTime >= endTime) {
         work = !work;
-        timeout = work ? 25 * 60 * 1000 : 5 * 60 * 1000;
+        timeout = work ? worktime * 60 * 1000 : breaktime * 60 * 1000;
         countElement.style.color = work ? "#f44336" : "#4caf50";
         currentTime = (new Date()).getTime();
         endTime = (new Date()).getTime() + timeout;
@@ -43,18 +39,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
   countDown();
 
-  document.getElementById('start').addEventListener('click', function() {
-    run = true;
-  }, false);
+  function changeButtonText() {
+    if (run) {
+      run = false;
+      startButton.textContent = 'resume';
+    } else {
+      run = true;
+      startButton.textContent = 'pause';
+    }
+  }
 
-  document.getElementById('stop').addEventListener('click', function() {
-    run = false;
-  }, false);
-
-  document.getElementById('reset').addEventListener('click', function() {
-    document.getElementById('time').textContent = '25:00';
-    run = false;
+  function resetFunction() {
+    timeout = worktime * 60 * 1000;
+    currentTime = (new Date()).getTime();
+    endTime = (new Date()).getTime() + timeout;
+    startButton.textContent = 'start';
+    countElement.textContent = worktime + ':00';
     reset = true;
-  }, false);
+    run = false;
+  }
 
+  startButton.addEventListener('click', changeButtonText, false);
+
+  document.getElementById('reset').addEventListener('click', resetFunction, false);
+
+  var dialog = document.querySelector('#dialog');
+  var showDialogButton = document.querySelector('#show-dialog');
+  if (! dialog.showModal) {
+    dialogPolyfill.registerDialog(dialog);
+  }
+  showDialogButton.addEventListener('click', function() {
+    dialog.showModal();
+  });
+  dialog.querySelector('.close').addEventListener('click', function() {
+    dialog.close();
+  });
+
+  document.getElementById('save').addEventListener('click', () => {
+    let reg = /^\d+([.]?(\d+)?)?$/;
+    let workTimeInput = document.getElementById('workTime').value;
+    let restTimeInput = document.getElementById('restTime').value;
+    if (reg.test(workTimeInput) && reg.test(restTimeInput) && !run) {
+      worktime = parseInt(workTimeInput, 10);
+      restime = parseInt(restTimeInput, 10);
+      countElement.textContent = worktime + ':00';
+    }
+    dialog.close();
+  });
 });

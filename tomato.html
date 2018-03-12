@@ -14,7 +14,10 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-orange.min.css"/>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.2/dialog-polyfill.min.js"></script>
     <link rel="stylesheet" href="stylesheets/tomato.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.2/dialog-polyfill.min.css">
     <script src="js/tomato.js"></script>
     <title>Tomato Clock</title>
     <script>
@@ -36,17 +39,60 @@
     </script>
   </head>
   <body>
-    <div class="mdl-grid">
-      <div class="mdl-card mdl-cell mdl-cell--6-col mdl-shadow--4dp">
-        <div class="mdl-card__title">
-          <h2 id="time" class="mdl-card__title-text">25:00</h2>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Tomato Clock</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="https://github.com/xxyzz" target="_blank" rel="noopener noreferrer">Github</a>
+            <a class="mdl-navigation__link" href="https://xxyzz.me" target="_blank" rel="noopener noreferrer">Blog</a>
+          </nav>
         </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <button id="start" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">start</button>
-          <button id="stop" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">stop</button>
-          <button id="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">reset</button>
-        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Tomato Clock</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="https://github.com/xxyzz" target="_blank" rel="noopener noreferrer">Github</a>
+          <a class="mdl-navigation__link" href="https://xxyzz.me" target="_blank" rel="noopener noreferrer">Blog</a>
+        </nav>
       </div>
+      <main class="mdl-layout__content">
+        <div class="page-content mdl-grid">
+          <div class="mdl-card mdl-cell mdl-cell--6-col mdl-shadow--4dp">
+            <div class="mdl-card__title">
+              <h2 id="time" class="mdl-card__title-text">25:00</h2>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <button id="start" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">start</button>
+              <button id="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">reset</button>
+              <button id="show-dialog" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">options</button>
+            </div>
+          </div>
+        </div>
+      </main>
+      <dialog id="dialog" class="mdl-dialog">
+          <h4 class="mdl-dialog__title">Options</h4>
+          <div class="mdl-dialog__content">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="^\d+([.]?(\d+)?)?$" id="workTime">
+              <label class="mdl-textfield__label" for="workTime">Work minutes</label>
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="^\d+([.]?(\d+)?)?$" id="restTime">
+              <label class="mdl-textfield__label" for="restTime">Rest minutes</label>
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+          </div>
+          <div class="mdl-dialog__actions">
+            <button id="save" type="button" class="mdl-button">Save</button>
+            <button type="button" class="mdl-button close">Cancel</button>
+          </div>
+        </dialog>
     </div>
   </body>
 </html>
