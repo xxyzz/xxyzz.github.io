@@ -1,53 +1,47 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var run = false, timeout = 0, currentTime = 0, endTime = 0, work = true, reset = false, worktime = 25, breaktime = 5;
+    var run = false, timeout = 0, currentTime = 0, work = true, worktime = 25, breaktime = 5;
+    var interval;
+    var workColor = "#f44336";
+    var breakColor = "#4caf50";
     var countElement = document.getElementById("time");
     var startButton = document.getElementById("start");
 
-    var updater = function() {
-        if (run && currentTime < endTime) {
+    function updater() {
+        if (run && timeout > 0 ) {
             currentTime += 1000;
             timeout -= 1000;
             var time = new Date();
             time.setTime(timeout);
-            console.log(timeout);
             var minutes = time.getMinutes();
             var seconds = time.getSeconds();
-            countElement.textContent = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            countElement.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
         }
 
-        if (run && currentTime >= endTime) {
+        if (run && timeout <= 0) {
             work = !work;
             notify();
             timeout = work ? worktime * 60 * 1000 : breaktime * 60 * 1000;
-            countElement.style.color = work ? "#f44336" : "#4caf50";
+            countElement.style.color = work ? workColor : breakColor;
+            document.getElementsByTagName("body")[0].style.background = work ? workColor : breakColor;
+            document.getElementsByClassName("mdl-layout__header")[0].style.background = work ? workColor : breakColor;
             currentTime = (new Date()).getTime();
-            endTime = currentTime + timeout;
         }
-    };
+    }
 
     function countDown() {
-        if (timeout == currentTime == endTime == 0) {
+        if (timeout == 0 && currentTime == 0) {
             timeout = worktime * 60 * 1000;
         }
 
-        if (reset) {
-            resetFunction();
-            clearInterval(updater);
-            updater = null;
-            reset = false;
-        }
-
         currentTime = (new Date()).getTime();
-        endTime = currentTime + timeout;
 
         if (run) {
             run = false;
-            clearInterval(updater);
-            updater = null;
+            clearInterval(interval);
             startButton.textContent = "resume";
         } else {
             run = true;
-            setInterval(updater, 1000);
+            interval = setInterval(updater, 1000);
             startButton.textContent = "pause";
             notify();
         }
@@ -56,12 +50,13 @@ document.addEventListener("DOMContentLoaded", function() {
     function resetFunction() {
         timeout = worktime * 60 * 1000;
         currentTime = (new Date()).getTime();
-        endTime = currentTime + timeout;
         startButton.textContent = "start";
         countElement.textContent = worktime + ":00";
-        countElement.style.color = "#f44336";
+        countElement.style.color = workColor;
+        document.getElementsByTagName("body")[0].style.background = workColor;
+        document.getElementsByClassName("mdl-layout__header")[0].style.background = workColor;
+        clearInterval(interval);
         work = true;
-        reset = true;
         run = false;
     }
 
