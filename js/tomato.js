@@ -80,13 +80,13 @@ document.addEventListener("DOMContentLoaded", function() {
         let reg = /^\d+([.]?(\d+)?)?$/;
         let workTimeInput = document.getElementById("workTime").value;
         let restTimeInput = document.getElementById("restTime").value;
-        if (reg.test(workTimeInput) && reg.test(restTimeInput) && !run) {
+        if (reg.test(workTimeInput) && reg.test(restTimeInput) && !run && workTimeInput > 0 && restTimeInput > 0) {
             worktime = parseInt(workTimeInput, 10);
             breaktime = parseInt(restTimeInput, 10);
             countElement.textContent = worktime + ":00";
             resetFunction();
+            dialog.close();
         }
-        dialog.close();
     });
 
     function requestPermission() {
