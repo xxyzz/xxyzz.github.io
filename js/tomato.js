@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var breakColor = "#4caf50";
     var countElement = document.getElementById("time");
     var startButton = document.getElementById("start");
+    var dialog = document.querySelector("#dialog");
+    var showDialogButton = document.querySelector("#show-dialog");
 
     function updater() {
         if (run && timeout > 0 ) {
@@ -64,9 +66,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("reset").addEventListener("click", resetFunction, false);
 
-    var dialog = document.querySelector("#dialog");
-    var showDialogButton = document.querySelector("#show-dialog");
-    if (! dialog.showModal) {
+    // dialog
+    if (!dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
     showDialogButton.addEventListener("click", function() {
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // notification
     function requestPermission() {
         Notification.requestPermission();
     }
@@ -109,4 +111,14 @@ document.addEventListener("DOMContentLoaded", function() {
             requestPermission();
         }
     }
+
+    // hotkeys
+    window.addEventListener("keyup", function(event) {
+        if (event.code == "Space" && !dialog.hasAttribute("open")) {
+            countDown();
+        }
+        if (event.code == "KeyR" && !dialog.hasAttribute("open")) {
+            resetFunction();
+        }
+    });
 });
