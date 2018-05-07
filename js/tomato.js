@@ -1,41 +1,49 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var run = false, timeout = 0, currentTime = 0, work = true, worktime = 25, breaktime = 5;
-    var interval;
-    var workColor = "#f44336";
-    var breakColor = "#4caf50";
-    var countElement = document.getElementById("time");
-    var startButton = document.getElementById("start");
-    var dialog = document.querySelector("#dialog");
-    var showDialogButton = document.querySelector("#show-dialog");
+    let run = false, timeout = 0, work = true, worktime = 25, shortbreak = 5, longbreak = 30, cycles = 0;
+    let interval;
+    let workColor = "#f44336";
+    let breakColor = "#4caf50";
+    let countElement = document.getElementById("time");
+    let startButton = document.getElementById("start");
+    let dialog = document.querySelector("#dialog");
+    let showDialogButton = document.querySelector("#show-dialog");
+    let body = document.getElementsByTagName("body")[0];
+    let header = document.getElementsByClassName("mdl-layout__header")[0];
 
     function updater() {
-        if (run && timeout > 0 ) {
-            currentTime += 1000;
+        if (run && timeout > 0) {
             timeout -= 1000;
-            var time = new Date();
+            let time = new Date();
             time.setTime(timeout);
-            var minutes = time.getMinutes();
-            var seconds = time.getSeconds();
+            let minutes = time.getMinutes();
+            let seconds = time.getSeconds();
             countElement.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
         }
 
         if (run && timeout <= 0) {
             work = !work;
             notify();
-            timeout = work ? worktime * 60 * 1000 : breaktime * 60 * 1000;
-            countElement.style.color = work ? workColor : breakColor;
-            document.getElementsByTagName("body")[0].style.background = work ? workColor : breakColor;
-            document.getElementsByClassName("mdl-layout__header")[0].style.background = work ? workColor : breakColor;
-            currentTime = (new Date()).getTime();
+            if (work) {
+                timeout = worktime * 60 * 1000;
+                countElement.style.color = workColor;
+                body.style.background = workColor;
+                header.style.background = workColor;
+                countElement.textContent = worktime + ":00";
+            } else {
+                cycles++;
+                timeout = cycles % 4 == 0 ? longbreak * 60 * 1000 : shortbreak * 60 * 1000;
+                countElement.style.color = breakColor;
+                body.style.background = breakColor;
+                header.style.background = breakColor;
+                countElement.textContent = cycles % 4 == 0 ? longbreak + ":00" : shortbreak + ":00";
+            }
         }
     }
 
     function countDown() {
-        if (timeout == 0 && currentTime == 0) {
+        if (timeout == 0) {
             timeout = worktime * 60 * 1000;
         }
-
-        currentTime = (new Date()).getTime();
 
         if (run) {
             run = false;
@@ -51,17 +59,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function resetFunction() {
         timeout = worktime * 60 * 1000;
-        currentTime = (new Date()).getTime();
         startButton.textContent = "start";
         countElement.textContent = worktime + ":00";
         countElement.style.color = workColor;
-        document.getElementsByTagName("body")[0].style.background = workColor;
-        document.getElementsByClassName("mdl-layout__header")[0].style.background = workColor;
+        body.style.background = workColor;
+        header.style.background = workColor;
         clearInterval(interval);
         work = true;
         run = false;
     }
 
+    // add eventListener to buttons  
     startButton.addEventListener("click", countDown, false);
 
     document.getElementById("reset").addEventListener("click", resetFunction, false);
@@ -80,10 +88,12 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("save").addEventListener("click", () => {
         let reg = /^\d+([.]?(\d+)?)?$/;
         let workTimeInput = document.getElementById("workTime").value;
-        let restTimeInput = document.getElementById("restTime").value;
-        if (reg.test(workTimeInput) && reg.test(restTimeInput) && !run && workTimeInput > 0 && restTimeInput > 0) {
+        let shortBreakTimeInput = document.getElementById("shortbreak").value;
+        let longBreakTimeInput = document.getElementById("longbreak").value;
+        if (reg.test(workTimeInput) && reg.test(shortBreakTimeInput) && reg.test(longBreakTimeInput) && !run && workTimeInput > 0 && shortBreakTimeInput > 0 && longBreakTimeInput > 0) {
             worktime = parseInt(workTimeInput, 10);
-            breaktime = parseInt(restTimeInput, 10);
+            shortbreak = parseInt(shortBreakTimeInput, 10);
+            longbreak = parseInt(longBreakTimeInput, 10);
             countElement.textContent = worktime + ":00";
             resetFunction();
             dialog.close();
@@ -101,12 +111,12 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!("Notification" in window)) {
             alert("This browser does not support system notifications");
         } else if (Notification.permission === "granted") {
-            var title = work ? "Keep working!" : "Time for a break";
-            var options = {
+            let title = work ? "Keep working!" : "Time for a break";
+            let options = {
                 tag: "notify",
                 renotify: true
             };
-            var notification = new Notification(title, options);
+            let notification = new Notification(title, options);
         } else if (Notification.permission !== "denied") {
             requestPermission();
         }

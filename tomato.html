@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="A simple tomato clock, freecodecamp advanced front end development project.">
-    <meta property="og:title" content="Tomato Clock">
+    <meta name="description" content="A simple pomodoro timer, freecodecamp advanced front end development project.">
+    <meta property="og:title" content="Pomodoro">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://xxyzz.github.io/images/tomato/tomato.ico">
-    <meta property="og:description" content="A simple tomato clock, freecodecamp advanced front end development project.">
+    <meta property="og:description" content="A simple pomodoro timer, freecodecamp advanced front end development project.">
     <meta name="theme-color" content="#f44336">
     <link rel="shortcut icon" href="images/tomato/tomato.ico">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="stylesheets/tomato.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.2/dialog-polyfill.min.css">
     <script src="js/tomato.js"></script>
-    <title>Tomato Clock</title>
+    <title>Pomodoro</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98608216-1"></script>
     <script>
@@ -35,7 +35,7 @@
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">Tomato Clock</span>
+          <span class="mdl-layout-title">Pomodoro</span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
@@ -46,7 +46,7 @@
         </div>
       </header>
       <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Tomato Clock</span>
+        <span class="mdl-layout-title">Pomodoro</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="https://github.com/xxyzz/xxyzz.github.io" target="_blank" rel="noopener noreferrer">Github</a>
           <a class="mdl-navigation__link" href="https://xxyzz.me" target="_blank" rel="noopener noreferrer">Blog</a>
@@ -75,8 +75,13 @@
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="^\d+([.]?(\d+)?)?$" id="restTime">
-              <label class="mdl-textfield__label" for="restTime">Rest minutes</label>
+              <input class="mdl-textfield__input" type="text" pattern="^\d+([.]?(\d+)?)?$" id="shortbreak">
+              <label class="mdl-textfield__label" for="shortbreak">Short break minutes</label>
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="^\d+([.]?(\d+)?)?$" id="longbreak">
+              <label class="mdl-textfield__label" for="longbreak">Longer break minutes</label>
               <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
           </div>
