@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (run && timeout <= 0) {
             work = !work;
-            notify();
             if (work) {
                 timeout = worktime * 60 * 1000;
                 countElement.style.color = workColor;
@@ -37,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 header.style.background = breakColor;
                 countElement.textContent = cycles % 4 == 0 ? longbreak + ":00" : shortbreak + ":00";
             }
+            notify();
         }
     }
 
@@ -110,8 +110,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function notify() {
         if (!("Notification" in window)) {
             alert("This browser does not support system notifications");
-        } else if (Notification.permission === "granted") {
-            let title = work ? "Keep working!" : "Time for a break";
+        } else if (Notification.permission === "granted" && cycles > 0) {
+            let title = work ? "Keep working!" : cycles % 4 == 0 ? "Time for a longer break" : "Time for a short break";
             let options = {
                 tag: "notify",
                 renotify: true
