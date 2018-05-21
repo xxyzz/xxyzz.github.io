@@ -138,10 +138,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // hotkeys
     window.addEventListener("keyup", function(event) {
-        if (event.code == "Space" && !dialog.hasAttribute("open")) {
+        if (event.code == "Space" && !optionsDialog.hasAttribute("open") && !aboutDialog.hasAttribute("open")) {
             countDown();
         }
-        if (event.code == "KeyR" && !dialog.hasAttribute("open")) {
+        if (event.code == "KeyR" && !optionsDialog.hasAttribute("open") && !aboutDialog.hasAttribute("open")) {
             resetFunction();
         }
     });
