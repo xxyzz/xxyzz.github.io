@@ -41,7 +41,7 @@
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
             <a class="mdl-navigation__link" href="https://github.com/xxyzz/xxyzz.github.io" target="_blank" rel="noopener noreferrer">Github</a>
-            <a class="mdl-navigation__link" href="https://xxyzz.me" target="_blank" rel="noopener noreferrer">Blog</a>
+            <a class="mdl-navigation__link showAboutDialog" href="#">About</a>
           </nav>
         </div>
       </header>
@@ -49,7 +49,7 @@
         <span class="mdl-layout-title">Pomodoro</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="https://github.com/xxyzz/xxyzz.github.io" target="_blank" rel="noopener noreferrer">Github</a>
-          <a class="mdl-navigation__link" href="https://xxyzz.me" target="_blank" rel="noopener noreferrer">Blog</a>
+          <a class="mdl-navigation__link showAboutDialog" href="#">About</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
@@ -61,12 +61,12 @@
             <div class="mdl-card__actions mdl-card--border">
               <button id="start" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">start</button>
               <button id="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">reset</button>
-              <button id="show-dialog" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">options</button>
+              <button id="showOptions" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">options</button>
             </div>
           </div>
         </div>
       </main>
-      <dialog id="dialog" class="mdl-dialog">
+      <dialog id="optionsDialog" class="mdl-dialog">
           <h4 class="mdl-dialog__title">Options</h4>
           <div class="mdl-dialog__content">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -88,6 +88,19 @@
           <div class="mdl-dialog__actions">
             <button id="save" type="button" class="mdl-button">Save</button>
             <button type="button" class="mdl-button close">Cancel</button>
+          </div>
+        </dialog>
+        <dialog id="aboutDialog" class="mdl-dialog">
+          <h4 class="mdl-dialog__title">About</h4>
+          <div class="mdl-dialog__content">
+            <p>This <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank" rel="noopener noreferrer">Pomodoro timer</a>'s
+              default work timer is twenty-five minutes, short break timer is five minutes. After four pomodoros, you will have a thirty minutes rest.
+              Feel free to alter the default settings! And welcome to visit <a href="https://xxyzz.me" target="_blank" rel="noopener noreferrer">my blog</a>.
+            </p>
+          </div>
+          <div class="mdl-dialog__actions">
+            <a type="button" class="mdl-button" href="https://github.com/xxyzz/xxyzz.github.io/" target="_blank" rel="noopener noreferrer">Contribute</a>
+            <a type="button" class="mdl-button close">Close</a>
           </div>
         </dialog>
     </div>

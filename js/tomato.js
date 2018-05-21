@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let breakColor = "#4caf50";
     let countElement = document.getElementById("time");
     let startButton = document.getElementById("start");
-    let dialog = document.querySelector("#dialog");
-    let showDialogButton = document.querySelector("#show-dialog");
+    let optionsDialog = document.querySelector("#optionsDialog");
+    let showOptions = document.querySelector("#showOptions");
+    let aboutDialog = document.querySelector("#aboutDialog");
+    let showAbout = document.querySelectorAll(".showAboutDialog");
     let body = document.getElementsByTagName("body")[0];
     let header = document.getElementsByClassName("mdl-layout__header")[0];
 
@@ -76,14 +78,25 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("reset").addEventListener("click", resetFunction, false);
 
     // dialog
-    if (!dialog.showModal) {
-        dialogPolyfill.registerDialog(dialog);
+    if (!aboutDialog.showModal) {
+        dialogPolyfill.registerDialog(aboutDialog);
     }
-    showDialogButton.addEventListener("click", function() {
-        dialog.showModal();
+    if (!optionsDialog.showModal) {
+        dialogPolyfill.registerDialog(optionsDialog);
+    }
+    showOptions.addEventListener("click", function() {
+        optionsDialog.showModal();
     });
-    dialog.querySelector(".close").addEventListener("click", function() {
-        dialog.close();
+    for (let showAboutButton of showAbout) {
+        showAboutButton.addEventListener("click", function() {
+            aboutDialog.showModal();
+        });
+    }
+    aboutDialog.querySelector(".close").addEventListener("click", function() {
+        aboutDialog.close();
+    });
+    optionsDialog.querySelector(".close").addEventListener("click", function() {
+        optionsDialog.close();
     });
 
     document.getElementById("save").addEventListener("click", () => {
