@@ -1,16 +1,29 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // show Chinese if the browser's preferred language is Chinese
+    let lang = navigator.language || navigator.userLanguage;
+    if (lang == "zh-CN" || lang == "zh") {
+        document.querySelector("html").setAttribute("lang", lang);
+        for (let e of document.querySelectorAll("[lang='en-US']")) {
+            e.remove();
+        }
+    } else {
+        for (let e of document.querySelectorAll("[lang='zh-CN']")) {
+            e.remove();
+        }
+    }
+
     let run = false, timeout = 0, work = true, worktime = 25, shortbreak = 5, longbreak = 30, cycles = 0;
     let interval;
     let workColor = "#f44336";
     let breakColor = "#4caf50";
-    let countElement = document.getElementById("time");
-    let startButton = document.getElementById("start");
+    let countElement = document.querySelector("#time");
+    let startButton = document.querySelector("#start");
     let optionsDialog = document.querySelector("#optionsDialog");
     let showOptions = document.querySelector("#showOptions");
     let aboutDialog = document.querySelector("#aboutDialog");
     let showAbout = document.querySelectorAll(".showAboutDialog");
-    let body = document.getElementsByTagName("body")[0];
-    let header = document.getElementsByClassName("mdl-layout__header")[0];
+    let body = document.querySelector("body");
+    let header = document.querySelector(".mdl-layout__header");
 
     function updater() {
         if (run && timeout > 0) {
@@ -51,18 +64,21 @@ document.addEventListener("DOMContentLoaded", function() {
         if (run) {
             run = false;
             clearInterval(interval);
-            startButton.textContent = "resume";
+            if (lang == "zh-CN" || lang == "zh") startButton.textContent = "恢复";
+            else startButton.textContent = "resume";
         } else {
             run = true;
             interval = setInterval(updater, 1000);
-            startButton.textContent = "pause";
+            if (lang == "zh-CN" || lang == "zh") startButton.textContent = "暂停";
+            else startButton.textContent = "pause";
             notify();
         }
     }
 
     function resetFunction() {
         timeout = worktime * 60 * 1000;
-        startButton.textContent = "start";
+        if (lang == "zh-CN" || lang == "zh") startButton.textContent = "开始";
+        else startButton.textContent = "start";
         countElement.textContent = worktime + ":00";
         countElement.style.color = workColor;
         body.style.background = workColor;
@@ -72,26 +88,30 @@ document.addEventListener("DOMContentLoaded", function() {
         run = false;
     }
 
-    // add eventListener to buttons  
+    // add eventListener to buttons
     startButton.addEventListener("click", countDown, false);
 
-    document.getElementById("reset").addEventListener("click", resetFunction, false);
+    document.querySelector("#reset").addEventListener("click", resetFunction, false);
 
     // dialog
     if (!aboutDialog.showModal) {
         dialogPolyfill.registerDialog(aboutDialog);
     }
+
     if (!optionsDialog.showModal) {
         dialogPolyfill.registerDialog(optionsDialog);
     }
+
     showOptions.addEventListener("click", function() {
         optionsDialog.showModal();
     });
+
     for (let showAboutButton of showAbout) {
         showAboutButton.addEventListener("click", function() {
             aboutDialog.showModal();
         });
     }
+
     aboutDialog.querySelector(".close").addEventListener("click", function() {
         aboutDialog.close();
     });
@@ -110,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
             longbreak = parseInt(longBreakTimeInput, 10);
             countElement.textContent = worktime + ":00";
             resetFunction();
-            dialog.close();
+            optionsDialog.close();
         }
     });
 
@@ -123,9 +143,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function notify() {
         if (!("Notification" in window)) {
-            alert("This browser does not support system notifications");
+            if (lang == "zh-CN" || lang == "zh") alert("此浏览器不支持系统通知。");
+            else alert("This browser does not support system notifications.");
         } else if (Notification.permission === "granted" && cycles > 0) {
-            let title = work ? "Keep working!" : cycles % 4 == 0 ? "Time for a longer break" : "Time for a short break";
+            let title = "";
+            if (lang == "zh-CN" || lang == "zh") title = work ? "继续努力！" : cycles % 4 == 0 ? "长休息时间" : "短暂休息时间";
+            else title = work ? "Keep working!" : cycles % 4 == 0 ? "Time for a longer break" : "Time for a short break";
             let options = {
                 tag: "notify",
                 renotify: true

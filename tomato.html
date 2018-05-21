@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en-US">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +42,8 @@
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
             <a class="mdl-navigation__link" href="https://github.com/xxyzz/xxyzz.github.io" target="_blank" rel="noopener noreferrer">Github</a>
-            <a class="mdl-navigation__link showAboutDialog" href="#">About</a>
+            <a class="mdl-navigation__link showAboutDialog" href="#" lang="en-US">About</a>
+            <a class="mdl-navigation__link showAboutDialog" href="#" lang="zh-CN">关于</a>
           </nav>
         </div>
       </header>
@@ -50,7 +51,8 @@
         <span class="mdl-layout-title">Pomodoro</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link navigation__link" href="https://github.com/xxyzz/xxyzz.github.io" target="_blank" rel="noopener noreferrer">Github</a>
-          <a class="mdl-navigation__link navigation__link showAboutDialog" href="#">About</a>
+          <a class="mdl-navigation__link navigation__link showAboutDialog" href="#" lang="en-US">About</a>
+          <a class="mdl-navigation__link navigation__link showAboutDialog" href="#" lang="zh-CN">关于</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
@@ -60,51 +62,68 @@
               <h2 id="time" class="mdl-card__title-text">25:00</h2>
             </div>
             <div class="mdl-card__actions mdl-card--border">
-              <button id="start" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">start</button>
-              <button id="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">reset</button>
-              <button id="showOptions" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">options</button>
+              <button id="start" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" lang="en-US">start</button>
+              <button id="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" lang="en-US">reset</button>
+              <button id="showOptions" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" lang="en-US">options</button>
+              <button id="start" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" lang="zh-CN">开始</button>
+              <button id="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" lang="zh-CN">重置</button>
+              <button id="showOptions" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" lang="zh-CN">选项</button>
             </div>
           </div>
         </div>
       </main>
       <dialog id="optionsDialog" class="mdl-dialog">
-          <h4 class="mdl-dialog__title">Options</h4>
+          <h4 class="mdl-dialog__title" lang="en-US">Options</h4>
+          <h4 class="mdl-dialog__title" lang="zh-CN">选项</h4>
           <div class="mdl-dialog__content">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" pattern="^\d+([.]?(\d+)?)?$" id="workTime">
-              <label class="mdl-textfield__label" for="workTime">Work minutes</label>
-              <span class="mdl-textfield__error">Input is not a number!</span>
+              <label class="mdl-textfield__label" for="workTime" lang="en-US">Work minutes</label>
+              <label class="mdl-textfield__label" for="workTime" lang="zh-CN">工作时间（分钟）</label>
+              <span class="mdl-textfield__error" lang="en-US">Input is not a number!</span>
+              <span class="mdl-textfield__error" lang="zh-CN">输入值不是数字！</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" pattern="^\d+([.]?(\d+)?)?$" id="shortbreak">
-              <label class="mdl-textfield__label" for="shortbreak">Short break minutes</label>
-              <span class="mdl-textfield__error">Input is not a number!</span>
+              <label class="mdl-textfield__label" for="shortbreak" lang="en-US">Short break minutes</label>
+              <label class="mdl-textfield__label" for="shortbreak" lang="zh-CN">短暂休息时间（分钟）</label>
+              <span class="mdl-textfield__error" lang="en-US">Input is not a number!</span>
+              <span class="mdl-textfield__error" lang="zh-CN">输入值不是数字！</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="text" pattern="^\d+([.]?(\d+)?)?$" id="longbreak">
-              <label class="mdl-textfield__label" for="longbreak">Longer break minutes</label>
-              <span class="mdl-textfield__error">Input is not a number!</span>
+              <label class="mdl-textfield__label" for="longbreak" lang="en-US">Longer break minutes</label>
+              <label class="mdl-textfield__label" for="longbreak" lang="zh-CN">长休息时间（分钟）</label>
+              <span class="mdl-textfield__error" lang="en-US">Input is not a number!</span>
+              <span class="mdl-textfield__error" lang="zh-CN">输入值不是数字！</span>
             </div>
           </div>
           <div class="mdl-dialog__actions">
-            <button id="save" type="button" class="mdl-button">Save</button>
-            <button type="button" class="mdl-button close">Cancel</button>
+            <button id="save" type="button" class="mdl-button" lang="en-US">Save</button>
+            <button type="button" class="mdl-button close" lang="en-US">Cancel</button>
+            <button id="save" type="button" class="mdl-button" lang="zh-CN">保存</button>
+            <button type="button" class="mdl-button close" lang="zh-CN">取消</button>
           </div>
         </dialog>
         <dialog id="aboutDialog" class="mdl-dialog">
-          <h4 class="mdl-dialog__title">About</h4>
+          <h4 class="mdl-dialog__title" lang="en-US">About</h4>
+          <h4 class="mdl-dialog__title" lang="zh-CN">关于</h4>
           <div class="mdl-dialog__content">
-            <p>This <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank" rel="noopener noreferrer">Pomodoro timer</a>'s
+            <p lang="en-US">This <a lang="en-US" href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank" rel="noopener noreferrer">Pomodoro timer</a>'s
               default work timer is twenty-five minutes, short break timer is five minutes. After four pomodoros, you will have a thirty minutes rest.
               Feel free to alter the default settings!
             </p>
-            <p>You can also press the space key to start/pause/resume the timer or press the key R to reset the timer.</p>
-            <p>And welcome to visit <a href="https://xxyzz.me" target="_blank" rel="noopener noreferrer">my blog</a>.
-            </p>
+            <p lang="en-US">You can also press the space key to start/pause/resume the timer or press the key R to reset the timer.</p>
+            <p lang="en-US">And welcome to visit <a lang="en-US" href="https://xxyzz.me" target="_blank" rel="noopener noreferrer">my blog</a>.</p>
+            <p lang="zh-CN">本<a lang="zh-CN" href="https://zh.wikipedia.org/zh-cn/%E7%95%AA%E8%8C%84%E5%B7%A5%E4%BD%9C%E6%B3%95" target="_blank" rel="noopener noreferrer">番茄钟</a>的默认工作时长为二十五分钟，短暂休息时长为五分钟。每隔四个番茄钟休息三十分钟。你可以随意修改默认时长。</p>
+            <p lang="zh-CN">你也可以通过摁空格键开始/暂停/恢复计时，或者摁R键重置。</p>
+            <p lang="zh-CN">欢迎访问<a lang="zh-CN" href="https://xxyzz.me" target="_blank" rel="noopener noreferrer">我的博客</a>。</p>
           </div>
           <div class="mdl-dialog__actions">
-            <a type="button" class="mdl-button" href="https://github.com/xxyzz/xxyzz.github.io/" target="_blank" rel="noopener noreferrer">Contribute</a>
-            <a type="button" class="mdl-button close">Close</a>
+            <a type="button" class="mdl-button" href="https://github.com/xxyzz/xxyzz.github.io/" target="_blank" rel="noopener noreferrer" lang="en-US">Contribute</a>
+            <a type="button" class="mdl-button close" lang="en-US">Close</a>
+            <a type="button" class="mdl-button" href="https://github.com/xxyzz/xxyzz.github.io/" target="_blank" rel="noopener noreferrer" lang="zh-CN">贡献代码</a>
+            <a type="button" class="mdl-button close" lang="zh-CN">关闭</a>
           </div>
         </dialog>
     </div>
