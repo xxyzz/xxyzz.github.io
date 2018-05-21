@@ -145,4 +145,12 @@ document.addEventListener("DOMContentLoaded", function() {
             resetFunction();
         }
     });
+
+    // close drawer after click
+    let layout = document.querySelector(".mdl-layout");
+    for (let link of document.querySelectorAll(".navigation__link")) {
+        link.addEventListener("click", () => {
+            layout.MaterialLayout.toggleDrawer();
+        });
+    }
 });
