@@ -19,3 +19,8 @@ body {
 .mdl-card__actions {
   text-align: center;
 }
+
+.mdl-badge.mdl-badge--overlap::after {
+  right: 10px;
+  top: 10px;
+}

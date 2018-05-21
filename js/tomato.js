@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 countElement.textContent = worktime + ":00";
             } else {
                 cycles++;
+                document.querySelector(".mdl-badge").setAttribute("data-badge", cycles);
                 timeout = cycles % 4 == 0 ? longbreak * 60 * 1000 : shortbreak * 60 * 1000;
                 countElement.style.color = breakColor;
                 body.style.background = breakColor;
