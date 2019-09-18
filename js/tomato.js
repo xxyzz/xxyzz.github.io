@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    let run = false, timeout = 0, work = true, worktime = 25, shortbreak = 5, longbreak = 30, cycles = 0;
+    let run = false, timeout = 0, work = true, worktime = 25, shortbreak = 5, longbreak = 15, cycles = 0;
     let interval;
     let workColor = "#f44336";
     let breakColor = "#4caf50";
